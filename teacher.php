@@ -14,6 +14,8 @@
 
 <div class="container">
     <a href="detail.php">Add new contact</a>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt reiciendis maxime maiores voluptates quos dicta 
+        aspernatur quas consequatur? Voluptatum error sapiente natus quos molestias et explicabo quas, ducimus accusantium. Quibusdam.</p>
 </div>
 
 </body>
