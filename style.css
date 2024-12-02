@@ -198,15 +198,16 @@ header{
 
 /*detailsform csss*/
 .contact{
-    width: 100%;
+    width: 1300px;
     height: 700px;
-    background-color: blue;
+    background-color: #fff;
     padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-left: 210px;
     margin-top: -16%;
+    border-color: #3c3d4f;
     overflow: hidden;
 }
 .box {
@@ -238,7 +239,8 @@ header{
 }
 .container{
     position: relative;
-     margin-left: 210px;
-     margin-top: 16px;
+    margin-left: 210px;
+    margin-top: 16px;
+    padding: 0%;
 }
 
