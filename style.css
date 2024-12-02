@@ -194,53 +194,23 @@ header{
     cursor: pointer;
 }
 
+.container{
+    padding-left: 20px;
+    height: 100vh;
+    width: 1300 px;
+    position: relative;
+    margin-left: 210px;
+    margin-top: -15%;
+    background-color: rgba(255, 255, 255, 0.399);
+
+}
 
 
 /*detailsform csss*/
-.contact{
-    width: 1300px;
-    height: 700px;
-    background-color: #fff;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 210px;
-    margin-top: -16%;
-    border-color: #3c3d4f;
-    overflow: hidden;
-}
-.box {
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.rolepannel{
+    margin: 0%;
 }
 
-.dropdown {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-}
 
-.dropdown:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-.dropdown option {
-    padding: 10px;
-}
-.container{
-    position: relative;
-    margin-left: 210px;
-    margin-top: 16px;
-    padding: 0%;
-}
+/* detail pannel */
 

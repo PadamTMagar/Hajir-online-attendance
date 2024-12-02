@@ -9,8 +9,22 @@
 </head>
 <body>
 <?php require_once('aetsheader.php'); ?>
-<?php require_once('aetssidebar.php'); ?>   
-
-    
+<?php require_once('aetssidebar.php'); ?>  
+<div class="container">
+    <div class="rollpannel">
+    <h2>All Role</h2>
+    <button>Add</button>
+    <table>
+        <tr>
+            <th>Roles</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><a href=""></a></td>
+            <td><a href=""></a></td>
+        </tr>
+    </table>
+    </div>
+</div>    
 </body>
 </html>

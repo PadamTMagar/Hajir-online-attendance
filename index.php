@@ -13,17 +13,4 @@
 <?php require_once('aetssidebar.php'); ?>   
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
