@@ -7,7 +7,7 @@
                 <li><a href="#"><i class="fa-regular fa-clipboard"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-bell fa-shake"></i></a></li>
                 <div id="date"></div>
-                <div class="login">Login</div>
+                <div class="login">Logout</div>
             </ul>
         </nav>
     </div>
