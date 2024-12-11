@@ -20,8 +20,8 @@
             <th>Action</th>
         </tr>
         <tr>
-            <td><a href=""></a></td>
-            <td><a href=""></a></td>
+            <td><a href="">admin</a></td>
+            <td><a href="">teacher</a></td>
         </tr>
     </table>
     </div>
