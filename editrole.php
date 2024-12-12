@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Role</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Edit Role</h1>
@@ -101,6 +102,8 @@
                 <input type="checkbox" id="deleteclass" name="deleteclass" value="deleteclass">
                 <label for="viewuser">Delete Classroom</label>
             </div>
+
+
             <h2>Attendance</h2>
             <div class="selectall">
                 <input type="checkbox" id="selectall" name="selectall" value="select all">
@@ -115,7 +118,6 @@
                 <label for="edituser">Edit Attendance</label>
                 <input type="checkbox" id="deleteattendance" name="deleteattendance" value="deleteattendance">
                 <label for="viewuser">Delete Attendance</label>
-            </div>
             </div>
 
 
@@ -132,7 +134,25 @@
                 <input type="checkbox" id="deleteqr" name="deleteqr" value="deleteqr">
                 <label for="viewuser">Delete Qr</label>
             </div>
+
+
+            <h2>Notice</h2>
+            <div class="selectall">
+                <input type="checkbox" id="selectall" name="selectall" value="select all">
+                <label for="selectall">select all</label>
+                </div>
+            <div class="selectindivdual">
+                <input type="checkbox" id="viewnotice" name="viewnotice" value="viewnotice">
+                <label for="viewuser">View Notice</label>
+                <input type="checkbox" id="addnotice" name="addnotice" value="addnotice">
+                <label for="adduser">Add Notice</label>
+                <input type="checkbox" id="editnotice" name="editnotice" value="editnotice">
+                <label for="edituser">Edit Notice</label>
+                <input type="checkbox" id="deletenotice" name="deletenotice" value="deletenotive">
+                <label for="viewuser">Delete Notive</label>
             </div>
+
+            
             <h2>Attendance</h2>
             <div class="selectall">
                 <input type="checkbox" id="selectall" name="selectall" value="select all">
@@ -148,23 +168,8 @@
                 <input type="checkbox" id="deleteattendance" name="deleteattendance" value="deleteattendance">
                 <label for="viewuser">Delete Attendance</label>
             </div>
-            </div>
-            <h2>Attendance</h2>
-            <div class="selectall">
-                <input type="checkbox" id="selectall" name="selectall" value="select all">
-                <label for="selectall">select all</label>
-                </div>
-            <div class="selectindivdual">
-                <input type="checkbox" id="viewattendance" name="viewattendance" value="viewattendance">
-                <label for="viewuser">View Attendance</label>
-                <input type="checkbox" id="addattendance" name="addattendance" value="addattendance">
-                <label for="adduser">Add Attendance</label>
-                <input type="checkbox" id="editattendance" name="editattendance" value="editattendance">
-                <label for="edituser">Edit Attendance</label>
-                <input type="checkbox" id="deleteattendance" name="deleteattendance" value="deleteattendance">
-                <label for="viewuser">Delete Attendance</label>
-            </div>
-            </div>
+
+
             <h2>Attendance</h2>
             <div class="selectall">
                 <input type="checkbox" id="selectall" name="selectall" value="select all">

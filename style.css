@@ -249,3 +249,10 @@ header{
 
 /* detail pannel */
 
+/* rolepannel */
+.rolelist{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
