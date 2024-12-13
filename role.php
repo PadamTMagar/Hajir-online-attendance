@@ -23,6 +23,9 @@
             <td><a href="">admin</a></td>
             <td><a href="">teacher</a></td>
         </tr>
+        <tr>
+            <td><a href="editrole.php">edit role</a></td>
+        </tr>
     </table>
     </div>
 </div>    
