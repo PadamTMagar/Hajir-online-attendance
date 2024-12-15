@@ -10,9 +10,8 @@
 <body>
 
 <?php require_once('aetsheader.php'); ?>
-<?php require_once('aetssidebar.php'); ?>   
+<?php require_once('aetssidebar.php'); ?>  
+<?php require_once('dashboard.php');?>
 
- hello world
 
- 
 </body>

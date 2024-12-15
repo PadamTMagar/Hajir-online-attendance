@@ -14,7 +14,7 @@ body{
 }
 .header{
     width: calc(100% -210px);
-    height: 320px;
+    height: 350px;
     background:linear-gradient(to right , #3c3d4f, #304c67, #245a7f );
     margin-left: 210px;
    /* background-size: calc(100% - 180px) auto;
@@ -96,10 +96,12 @@ header{
 .navlist #hovertext{
     position: absolute;
     top: 55px;  /* this need to moved to the hover effect*/
-    background: #245a7f;
+    background: #0056b3;
     color: #fff;
     padding: 7px 15px;
     border-radius: 25px;
+    border: 1px solid;
+    border-color: #fff;
     opacity: 0;
     pointer-events: none;
     transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
@@ -114,11 +116,10 @@ header{
     content: "";
     height: 15px;
     width: 15px;
-    background: #245a7f;
+    background: #0056b3;
     top: -7px;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
-
 }
 
 
@@ -344,3 +345,74 @@ instead of using this i have use break tag <br> */
     padding: 4px;
 }
 
+/* dishboard content  */
+.dashcontent{
+    padding-left: 20px;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    margin-left: 210px;
+    top: 75px;
+    /* background-color: rgba(255, 255, 255, 0.399); */
+    border-top:1px #acb0b2 solid;
+}
+
+.dashcontent .greeting{
+    padding: 8px;
+    color: #fff;
+    margin-bottom:20px;
+}
+
+.dashcontent .greeting span{
+    margin-bottom:8px;
+    font-size: 30px;
+}
+
+.dashcontent .greeting .greet .greetele {
+    margin-top: 5px;
+    font-size: 37px;
+}
+.dashcontent .greeting .greet .msg{
+    font-size: 25px;
+}
+
+.dashboard{
+    display: flex;
+    gap: 40px;
+    margin: 20px;
+    margin-left: 80px;
+}
+
+.total{
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 90px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.total .icon {
+    /* margin-left: -20px; */
+    padding: 10px;
+    font-size: 25px;
+}
+
+.total .content{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.content .title{
+    opacity: 80%;
+}
+
+.content .value{
+    font-size: 35px;
+    margin: 5px;
+}
