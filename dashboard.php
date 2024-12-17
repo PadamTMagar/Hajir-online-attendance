@@ -19,6 +19,15 @@
         </div>
 
 
+        <div class="total  teacher">
+            <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <div class="content">
+                <div class="title">Total Teacher</div>
+                <div class="value">0</div>
+            </div>
+        </div>
+
+
         <div class="total  present">
             <div class="icon"><i class="fa-solid fa-hand-fist"></i></div>
             <div class="content">
@@ -35,12 +44,65 @@
                 <div class="value">0</div>
             </div>
         </div>
+
+
+        <div class="total  absent">
+            <div class="icon"><i class="fa-solid fa-user-slash"></i></div>
+            <div class="content">
+                <div class="title">Absent</div>
+                <div class="value">0</div>
+            </div>
+        </div>
     </div>
 </div>
 
 
+<div class="analysis">
+    <div class="pie">
+        <div class="attendance">
+            
+            <div class="atten_header"> 
+            <div class="atten_icon"><i class="fa-regular fa-calendar-check"></i></div>
+                <span>Attendance</span>
+            </div>
+
+            <div class="chart" id="chart">
+                <canvas class="atten_chart"></canvas>
+        
+
+            <div class="details">
+                <ul>
+                    <li>Total Present <span class="value">100</span></li>
+                    <li>Total Present <span class="value">100</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <div class="linegraph">
+        <div class="monthly_report">
+
+            <div class="monthly_header">
+            <div class="monthly_icon"><i class="fa-regular fa-calendar-days"></i></div>
+                <span>Monthly Attendance</span>
+            </div>
+
+            <div class="line_value">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 <script>
+
+    // greeting java stript
     function greeting() {
         const hour = new Date().getHours();
         const greetele = document.getElementById("greet");
@@ -68,4 +130,8 @@
 
       }
       greeting();
+  
+</script>
+
+
 </script>
