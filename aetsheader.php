@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="navlist">
-                    <span id="hovertext">Calander</span>
+                    <span id="hovertext">Calendar</span>
                     <li><a href="#"><i class="fa-regular fa-calendar-days"></i></a></li>
                 </div>
 

@@ -14,7 +14,7 @@ body{
 }
 .header{
     width: calc(100% -210px);
-    height: 350px;
+    height: 355px;
     background:linear-gradient(to right , #3c3d4f, #304c67, #245a7f );
     margin-left: 210px;
    /* background-size: calc(100% - 180px) auto;
@@ -45,7 +45,7 @@ header{
     z-index: 2;
     user-select: none;
     /*border-bottom:1px #acb0b2 solid; */
-        
+
 }
     
 .logo img{
