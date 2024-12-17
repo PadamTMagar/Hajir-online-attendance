@@ -12,21 +12,34 @@
 <?php require_once('aetssidebar.php'); ?>  
 <div class="container">
     <div class="rollpannel">
-    <h2>All Role</h2>
-    <button>Add</button>
-    <table>
-        <tr>
-            <th>Roles</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td><a href="">admin</a></td>
-            <td><a href="">teacher</a></td>
-        </tr>
-        <tr>
-            <td><a href="editrole.php">edit role</a></td>
-        </tr>
-    </table>
+        <div class="role_header" >
+            <span class="role">Roles</span>
+            <span class="role_mgs">Manage Roles</span>
+        </div>
+    <div class="role_content">
+        <div class="role_title">
+                <span>All Roles</span>
+                <div class="add">
+                    <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
+                    <button>Add</button>    
+                </div> 
+        </div>
+            
+        <table class="roletable" border="1px" solid>
+            <tr>
+                <th>Roles</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><a href="">admin</a></td>
+                <td><a href="">teacher</a></td>
+            </tr>
+            <tr>
+                <td><a href="editrole.php">edit role</a></td>
+            </tr>
+        </table>
+    </div>
+        
     </div>
 </div>    
 </body>

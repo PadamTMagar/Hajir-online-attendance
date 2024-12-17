@@ -11,15 +11,13 @@
 }
 body{
     background:#f1f4ff ;
+
 }
 .header{
-    width: calc(100% -210px);
+    width: calc(100% - 210px);
     height: 355px;
     background:linear-gradient(to right , #3c3d4f, #304c67, #245a7f );
-    margin-left: 210px;
-   /* background-size: calc(100% - 180px) auto;
-    background-position: 180px 0;
-    background-repeat: no-repeat; */
+    margin-left: 210px; 
 }
 
 header{
@@ -30,7 +28,6 @@ header{
     justify-content: space-between;
     padding: 0 100px;
     border-bottom:1px #acb0b2 solid;
-
 }
 
 .logo{
@@ -236,13 +233,15 @@ header{
 }
 
 .container{
+    box-sizing: border-box;
     padding-left: 20px;
     height: 100vh;
-    width: 100%;
-    position: absolute;
+    width: calc(100% - 210px);
     margin-left: 210px;
+    position: absolute;
     top: 75px;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: #f1f4ff;
     /* background-color: rgba(255, 255, 255, 0.399); */
     border-top:1px #acb0b2 solid;
 
@@ -270,18 +269,49 @@ header{
     color: #245a7f;
 }
 
+#form .input_container {
+    position:relative;
+    width: 270px;
+    margin-bottom: 10px;
+    align-items: center;
+
+}
+
+#form .input_container input {
+    width: 100%;
+    padding: 10px 10px 10px 35px; 
+    border: 2px solid gray;
+    border-radius: 3px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#form .input_container input:focus{
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#form .input_container i {
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+}
+
 #btn {
 
     color: white;
     background-color: #245a7f;
-    padding:10px;
+    margin-top: 10px;
+    padding:10px 25px;
     border-radius: 50px;
-    padding: 10px ;
+    cursor:pointer ;
 }
 #btn:hover{
     color: #245a7f;
     background-color: #fff;
-    border-color: #3c3d4f;
+    /* border-color: #3c3d4f; */
 }
 @media screen and (max-width: 700px) {
     #form{
@@ -320,6 +350,7 @@ header{
     display: flex;
     justify-content: left;
     gap: 50px;
+    border-bottom: 2px #3c3d4f solid;
 
 }
 /* .rolebox .rolelist .item .selectindivdual {
@@ -345,11 +376,13 @@ instead of using this i have use break tag <br> */
     padding: 4px;
 }
 
+
+
 /* dishboard content  */
 .dashcontent{
     padding-left: 20px;
     height: 100vh;
-    width: 100%;
+    width: calc(100% - 210px);
     position: absolute;
     margin-left: 210px;
     top: 75px;
@@ -425,7 +458,7 @@ instead of using this i have use break tag <br> */
     margin-top: 25px;
     padding-left: 20px;
     height: 100vh;
-    width: 100%;
+    width: calc(100% - 210px);
     position: absolute;
     margin-left: 210px;
     display: flex;
@@ -468,4 +501,70 @@ instead of using this i have use break tag <br> */
     margin: 10px 5px;
     padding: 10px 8px;
     border-bottom: #3c3d4f solid;
+}
+
+.filter_contaier{
+    margin: 500px;
+}
+
+
+
+
+/* role */
+
+.role_header{
+    display: flex;
+    margin:  10px 0px;
+    padding: 5px 0px;
+    gap: 20px;
+    
+}
+
+.role_header .role{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.role_header .role_mgs{
+    opacity: 70%;  
+    margin-top: 15px;
+}       
+.role_content{
+    background-color: #fff;
+    margin: 10px 0px;
+    height: 480px;
+    width: 950;
+    border-radius: 8px;
+    border-top: 2px #245a7f solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.role_title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.role_title span{
+    font-size: 20px;
+}
+
+.role_title .add{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin: 2px;
+    padding: 7px;
+    background-color: #0056b3;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.role_title .add button{
+    all: unset;
+}
+
+.roletable{
+
 }
