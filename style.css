@@ -253,50 +253,88 @@ header{
     margin: 0%;
 }
 /* Login pannel */
-#form{
+
+
+
+#form {
     background-color: white;
-    width: 25%;
-    margin:120px auto ;
+    width: 90%; 
+    max-width: 400px; 
+    margin: 120px auto;
     padding: 50px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     border-radius: 9px;
 }
 
-#form h1{
+
+
+#form h1 {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     color: #245a7f;
 }
 
-#form .input_container {
-    position:relative;
-    width: 270px;
-    margin-bottom: 10px;
-    align-items: center;
 
+#form .input_container {
+    position: relative;
+    width: 100%; 
+    margin-bottom: 15px;
 }
 
+
 #form .input_container input {
-    width: 100%;
-    padding: 10px 10px 10px 35px; 
+    width: 100%; 
+    padding: 10px 10px 10px 35px;
     border: 2px solid gray;
     border-radius: 3px;
     outline: none;
     transition: border-color 0.3s ease;
+    box-sizing: border-box; 
 }
 
-#form .input_container input:focus{
+
+#form .input_container input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+
 #form .input_container i {
     position: absolute;
-    left: 10px; 
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: gray;
+}
+
+
+#form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#form button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 500px) {
+    #form {
+        width: 95%; 
+        padding: 30px;
+    }
+
+    #form .input_container input {
+        font-size: 14px; 
+        padding: 8px 8px 8px 30px;
+    }
 }
 
 #btn {
@@ -316,7 +354,7 @@ header{
 @media screen and (max-width: 700px) {
     #form{
         width:65%;
-        padding: 40px;
+        padding: 50px;
     }
 }
 
