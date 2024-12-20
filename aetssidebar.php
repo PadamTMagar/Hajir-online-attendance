@@ -1,6 +1,6 @@
 <div class="wrapper">  
         <div class="logo">
-            <a href="#"><img src="assets/Hajir.png" alt="logo"></a>
+            <a href="index.php"><img src="assets/Hajir.png" alt="logo"></a>
         </div>
         
         <div class="sidebar">

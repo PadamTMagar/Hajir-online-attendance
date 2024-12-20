@@ -119,10 +119,6 @@ header{
     transform: translateX(-50%) rotate(45deg);
 }
 
-
-
-/* Side Bar Css*/
-
 .login{
     display: block;
     color: white;
@@ -136,6 +132,61 @@ header{
     color: white;
     background-color:black ;
 }
+
+.login button{
+    display: inline-block;
+    all: unset;
+}
+
+
+
+.drop_content{
+    display: none;
+    top: 75px;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 200px;
+    z-index: 1;
+    text-align: center;
+}
+.profile_section{
+    padding: 15px; 
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.profile_pic{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 5px auto;
+    display: block;
+    border: 1px solid black;
+
+}
+.user_name{
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.drop_content a{
+    margin-top: 2px;
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.drop_content a:hover{
+    color: white;
+    background-color: #0056b3;
+
+}
+
+
+/* Side Bar Css*/
 
 .wrapper{
     display: flex;
@@ -604,5 +655,5 @@ instead of using this i have use break tag <br> */
 }
 
 .roletable{
-
+    padding: 0;
 }
