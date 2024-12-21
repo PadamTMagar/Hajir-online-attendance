@@ -9,4 +9,11 @@ openpopup.addEventListener('click', () =>
     background.style.display = 'block'; 
 )
 
+function close(){
+    popup.style.display = 'none';
+    background.style.displau = 'none';
+}
+
+background.addEventListener('click' , close);
+
 
