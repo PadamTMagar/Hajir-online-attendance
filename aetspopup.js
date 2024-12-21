@@ -4,10 +4,10 @@ const openpopup = document.getElementById('openpopup');
 const popup = document.getElementById('popup');
 const background = document.getElementById('background');
 
-openpopup.addEventListener('click', () =>
+openpopup.addEventListener('click', () =>{
     popup.style.display = 'block';
     background.style.display = 'block'; 
-)
+});
 
 function close(){
     popup.style.display = 'none';
