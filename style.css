@@ -737,11 +737,22 @@ tr:nth-child(even){
     background-color: #f2f2f2;
 }
 
+.action_row{
+    margin-left: 40px;
+}
+
+.view_btn{
+    color: white;
+    background-color: #10a7be;
+    padding: 5px 8px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
 .edit_btn{
     color: white;
     background-color: #0056b3;
     padding: 5px 8px;
-    margin: 5px;
     border-radius: 5px;
 }
 

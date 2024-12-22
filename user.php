@@ -52,7 +52,8 @@
                                         <td><?php echo$row['User_name']; ?></td>
                                         <td><?php echo$row['email']; ?></td>
                                         <td><?php echo$row['user_role']; ?></td>
-                                        <td><a href="" class="edit_btn">Edit</a>
+                                        <td class="action_row"><a href="" class="view_btn">View</a>
+                                            <a href="" class="edit_btn">Edit</a>
                                             <a href="" class="delete_btn">Delete</a></td>
                                     </tr>
 
