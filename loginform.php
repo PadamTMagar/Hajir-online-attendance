@@ -6,7 +6,9 @@ if(isset($_POST['submit'])){
     $password =$_POST['user'];
 
 }
-?>
+
+?> 
+
 
 <!DOCTYPE html>
 <html lang="en">
