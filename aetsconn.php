@@ -2,7 +2,7 @@
     $servername = "192.168.1.65";
     $username = "root";
     $password = "";
-    $dbname = "database1";  
+    $dbname = "hajir";  
     $conn = new mysqli($servername, $username, $password, $dbname, 3306  );
 
     if ($conn->connect_error) {

@@ -24,22 +24,23 @@
                     <button>Add</button>    
                 </div> 
         </div>
-            
-        <table class="roletable" border="1px" solid>
-            <tr>
-                <th>Roles</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <td><a href="">admin</a></td>
-                <td><a href="">teacher</a></td>
-            </tr>
-            <tr>
-                <td><a href="editrole.php">edit role</a></td>
-            </tr>
-        </table>
-    </div>
         
+        <table class="roletable">
+            <thread>
+                <tr>
+                    <th>Roles</th>
+                    <th>Action</th>
+                </tr>
+            </thread>
+            <tbody>
+                </tbody>
+                <tr>
+                    <td><a href="">admin</a></td>
+                    <td><a href="">edit</a>
+                        <a href="">edit</a></td>
+                </tr>
+        </table>
+    </div>  
     </div>
 </div>    
 </body>

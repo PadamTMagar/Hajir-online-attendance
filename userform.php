@@ -8,7 +8,7 @@ $table = "CREATE TABLE user_db (
                 User_name VARCHAR(30) NOT NULL, 
                 email VARCHAR(30) NOT NULL, 
                 passwd VARCHAR(255) NOT NULL, 
-                user_type VARCHAR(255) NOT NULL
+                user_rol VARCHAR(255) NOT NULL
 )";
 
 
@@ -17,7 +17,9 @@ $result = mysqli_query($conn, $table);
 
 if ($result) {
     echo "Table created successfully";
-} else {
+} 
+
+else {
     echo "Unsuccessful creation of table: " . mysqli_error($conn);
 }
 

@@ -1,6 +1,11 @@
 <?php 
 include("aetsconn.php");
 
+if(isset($_POST['submit'])){
+    $user =$_POST['user'];
+    $password =$_POST['user'];
+
+}
 ?>
 
 <!DOCTYPE html>

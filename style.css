@@ -621,7 +621,7 @@ instead of using this i have use break tag <br> */
 .role_content{
     background-color: #fff;
     margin: 10px 0px;
-    height: 480px;
+    min-height: 480px;
     width: 950;
     border-radius: 8px;
     border-top: 2px #245a7f solid;
@@ -654,6 +654,101 @@ instead of using this i have use break tag <br> */
     all: unset;
 }
 
-.roletable{
-    padding: 0;
+
+
+/* user */
+
+.user_header{
+    display: flex;
+    margin:  10px 0px;
+    padding: 5px 0px;
+    gap: 20px;
+    
 }
+
+.user_header .user{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.user_header .user_mgs{
+    opacity: 70%;  
+    margin-top: 15px;
+}       
+.user_content{
+    background-color: #fff;
+    margin: 10px 0px;
+    min-height: 480px;
+    width: 950;
+    border-radius: 8px;
+    border-top: 2px #245a7f solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.user_title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.user_title span{
+    font-size: 20px;
+}
+
+.user_title .add{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin: 2px;
+    padding: 7px;
+    background-color: #0056b3;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user_title .add button{
+    all: unset;
+}
+
+.usertable , .roletable{
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+/* style for table for multiple use */
+
+table , th , td {
+    border: 1px solid #245a7f;
+}
+
+th , td{
+    padding: 10px;
+    text-align: left;
+}
+
+th{
+    background-color: #245a7f;
+    color: #fff;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.edit_btn{
+    color: white;
+    background-color: #0056b3;
+    padding: 5px 8px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.delete_btn{
+    color: white;
+    background-color: red;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
