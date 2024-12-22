@@ -11,12 +11,19 @@
 <body>
 <?php require_once('aetsheader.php'); ?>
 <?php require_once('aetssidebar.php'); ?>   
-
 <div class="container">
-    <a href="detail.php">Add new contact</a>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt reiciendis maxime maiores voluptates quos dicta 
-        aspernatur quas consequatur? Voluptatum error sapiente natus quos molestias et explicabo quas, ducimus accusantium. Quibusdam.</p>
-</div>
-
+    <div class="userpannel"> <!--rolepannel-->
+        <div class="user_header" >
+            <span class="user">Users</span>
+            <span class="user_mgs">Manage Users</span>
+        </div>
+    <div class="user_content">
+        <div class="user_title">
+                <span>All Users</span>
+                <div class="add">
+                    <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
+                    <button>Add</button>    
+                </div> 
+        </div>
 </body>
 </html>

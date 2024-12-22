@@ -36,8 +36,8 @@
                 </tbody>
                 <tr>
                     <td><a href="">admin</a></td>
-                    <td><a href="">edit</a>
-                        <a href="">edit</a></td>
+                    <td><a href=""class="edit_btn">Edit</a>
+                        <a href="" class="delete_btn">Delete</a></td>
                 </tr>
         </table>
     </div>  
