@@ -22,22 +22,34 @@
         <div class="user_details">
             <form action="" name="adduser" method="POST">
 
+                <div class="name_details">
+                    <div>
+                        <label for="fname" id="fname">First Name</label>
+                        <input type="text" name="firstname" id="fistname">
+                    </div>
 
-                <div class="user_name">
-                    <label for="fname" id="fname">First Name</label>
-                    <input type="text" name="firstname" id="fistname">
-                    <label for="mname" id="mname">Mid Name</label>
-                    <input type="text" name="midname" id="midname">
-                    <label for="lname" id="lname">Last Name</label>
-                    <input type="text" name="lastname" id="lastname">
+                    <div>
+                        <label for="mname" id="mname">Mid Name</label>
+                        <input type="text" name="midname" id="midname">
+                    </div>
+
+                    <div>
+                        <label for="lname" id="lname">Last Name</label>
+                        <input type="text" name="lastname" id="lastname">
+                    </div>
                 </div>
 
 
                 <div class="user_socialmed">
-                    <label for="" id=""></label>
-                    <input type="text" name="" id="">
-                    <label for="" id=""></label>
-                    <input type="text" name="" id="">
+                    <div>
+                        <label for="email" id="email">Email</label>
+                        <input type="email" name="emailid" id="emailid">
+                    </div>
+                    
+                    <div>
+                        <label for="number" id="num">Number</label>
+                        <input type="" name="number" id="number">
+                    </div>
                 </div>
             </form>
                     

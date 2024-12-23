@@ -919,3 +919,14 @@ tr:nth-child(even){
     border-top: 2px #245a7f solid;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+
+.name_details , .user_socialmed {
+    display: flex;
+    justify-content: space-around;
+
+}
+.name_details div  , .user_socialmed div{
+    display: flex;
+    flex-direction: column;
+}
