@@ -897,7 +897,7 @@ tr:nth-child(even){
 
 /* adduser form */
 
-.add_header{
+.add_header {
     display: flex;
     margin:  10px 0px;
     padding: 5px 0px;
@@ -910,52 +910,82 @@ tr:nth-child(even){
     font-weight: bold;
 }
 
-.user_details{
+.user_details , .role_permiss , .more_details {
     background-color: #fff;
-    /* margin: 10px 0px; */
+    margin: 10px 0px;
+    margin-bottom: 40px;
     padding: 20px;
     min-height: 200px;
     width: 99.5%;
     border-radius: 8px;
     border-top: 2px #245a7f solid;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: auto;
+
 }
 
+h1{
+    font-size: 20px;
+    padding: 10px 0px;
+}
 
 .form_row {
     display: flex;
     gap: 20px;
 
 }
-.from_row .from_group{
-    flex: 1;
-}
-
-.from_group{
+.form_group{
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-.from_group label{
-    font-size: 16px;
-    color: #555;
-    margin-bottom:5px;
+.form_group label{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
-/* for small input box */
-.from_group label {
-
-}
-
 /* for big input box */
-.from_group label {
-
+.form_group label {
+    width: 400px;
 }
 
-.from_group input{
+/* for small input box */
+ #num ,#classselection , #date, #gender, #marital,#blood{
+    width: 230px;
+}
+
+.form_group input , select{
     padding: 10px;
     font-size: 14px;
-    border: 1px solid #717171;
+    border: 2px solid #959191;
     border-radius: 4px;
+    outline: none;
+}
+#date{
+    color: black;
+}
+
+.form_group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+.form-actions {
+    text-align: center;
+}
+
+.form-actions button {
+    justify-content: center ;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-actions button:hover {
+    background-color: #0056b3;
 }
