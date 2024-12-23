@@ -11,8 +11,21 @@
 <?php require_once('aetsheader.php'); ?>
 <?php require_once('aetssidebar.php'); ?>   
 <div class="container">
-    <a href="detail.php">Add new contact</a>
+    <div class="student"> 
+        <div class="student_header" >
+            <span class="student">Students</span>
+            <span class="student_mgs">Manage Students</span>
+        </div>
+    <div class="student_content">
+        <div class="student_title">
+                <span>All Student</span>
+                <div class="add">
+                    <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
+                    <button onclick="location.href='createnew.php';">Add</button>       
+                </div> 
+        </div>
+    </div>
+    </div>
 </div>
-    
 </body>
 </html>

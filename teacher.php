@@ -12,18 +12,21 @@
 <?php require_once('aetsheader.php'); ?>
 <?php require_once('aetssidebar.php'); ?>   
 <div class="container">
-    <div class="userpannel"> <!--rolepannel-->
-        <div class="user_header" >
-            <span class="user">Users</span>
-            <span class="user_mgs">Manage Users</span>
+    <div class="teacher"> <!--rolepannel-->
+        <div class="teacher_header" >
+            <span class="teacher">Teachers</span>
+            <span class="teacher_mgs">Manage Teachers</span>
         </div>
-    <div class="user_content">
-        <div class="user_title">
-                <span>All Users</span>
+    <div class="teacher_content">
+        <div class="teacher_title">
+                <span>All Teachers</span>
                 <div class="add">
                     <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
-                    <button>Add</button>    
+                    <button onclick="location.href='createnew.php';">Add</button>    
                 </div> 
         </div>
+    </div>
+    </div>
+</div>
 </body>
 </html>

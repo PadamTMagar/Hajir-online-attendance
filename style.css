@@ -142,7 +142,7 @@ header{
 
 .drop_content{
     display: none;
-    top: 75px;
+    top: 78px;
     position: absolute;
     right: 0;
     background-color: #fff;
@@ -300,6 +300,7 @@ header{
 
 
 /*detailsform csss*/
+
 .rolepannel{
     margin: 0%;
 }
@@ -465,6 +466,25 @@ instead of using this i have use break tag <br> */
     padding: 4px;
 }
 
+.update_button{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.update_button button{
+    all:unset;
+    color: #fff;
+    background-color: #0056b3   ;
+    margin: 10px 5px;
+    padding: 10px 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.update_button button:hover{
+    background-color: #007bff;
+}
 
 
 /* dishboard content  */
@@ -563,7 +583,7 @@ instead of using this i have use break tag <br> */
     border-radius:10px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-     
+    border-top: 2px #245a7f solid;
 }
 .attendance .atten_header {
     display:flex ;
@@ -582,6 +602,7 @@ instead of using this i have use break tag <br> */
     border-radius:10px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-top: 2px #245a7f solid;
 }
 
 .monthly_report .monthly_header{
@@ -595,8 +616,6 @@ instead of using this i have use break tag <br> */
 .filter_contaier{
     margin: 500px;
 }
-
-
 
 
 /* role */
@@ -622,7 +641,7 @@ instead of using this i have use break tag <br> */
     background-color: #fff;
     margin: 10px 0px;
     min-height: 480px;
-    width: 950;
+    width: 99.5%;
     border-radius: 8px;
     border-top: 2px #245a7f solid;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -655,7 +674,6 @@ instead of using this i have use break tag <br> */
 }
 
 
-
 /* user */
 
 .user_header{
@@ -679,7 +697,7 @@ instead of using this i have use break tag <br> */
     background-color: #fff;
     margin: 10px 0px;
     min-height: 480px;
-    width: 950;
+    width: 99.5%;
     border-radius: 8px;
     border-top: 2px #245a7f solid;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -718,7 +736,10 @@ instead of using this i have use break tag <br> */
 }
 
 /* style for table for multiple use */
-
+/* table{
+    width: calc(100% - 20px);
+    margin: 0px 10px;
+} */
 table , th , td {
     border: 1px solid #245a7f;
 }
@@ -763,3 +784,138 @@ tr:nth-child(even){
     border-radius: 5px;
 }
 
+
+/* teacher table */
+
+.teacher_header{
+    display: flex;
+    margin:  10px 0px;
+    padding: 5px 0px;
+    gap: 20px;
+    
+}
+
+.teacher_header .teacher{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.teacher_header .teacher_mgs{
+    opacity: 70%;  
+    margin-top: 15px;
+}       
+.teacher_content{
+    background-color: #fff;
+    margin: 10px 0px;
+    min-height: 480px;
+    width: 99.5%;
+    border-radius: 8px;
+    border-top: 2px #245a7f solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.teacher_title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.teacher_title span{
+    font-size: 20px;
+}
+
+.teacher_title .add{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin: 2px;
+    padding: 7px;
+    background-color: #0056b3;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.teacher_title .add button{
+    all: unset;
+}
+
+/* student table */
+
+.student_header{
+    display: flex;
+    margin:  10px 0px;
+    padding: 5px 0px;
+    gap: 20px;
+    
+}
+
+.student_header .student{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.student_header .student_mgs{
+    opacity: 70%;  
+    margin-top: 15px;
+}       
+.student_content{
+    background-color: #fff;
+    margin: 10px 0px;
+    min-height: 480px;
+    width: 99.5%;
+    border-radius: 8px;
+    border-top: 2px #245a7f solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.student_title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.student_title span{
+    font-size: 20px;
+}
+
+.student_title .add {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin: 2px;
+    padding: 7px;
+    background-color: #0056b3;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.student_title .add button {
+    all: unset;
+}
+
+/* adduser form */
+
+.add_header{
+    display: flex;
+    margin:  10px 0px;
+    padding: 5px 0px;
+    gap: 20px;
+    
+}
+
+.add_header .user{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.user_details{
+    background-color: #fff;
+    margin: 10px 0px;
+    min-height: 200px;
+    width: 99.5%;
+    border-radius: 8px;
+    border-top: 2px #245a7f solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

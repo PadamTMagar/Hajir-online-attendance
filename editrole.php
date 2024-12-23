@@ -195,7 +195,9 @@ include("aetssidebar.php");
                 </div>
 
 
-                <div class="item"></div>
+                <div class="update_button">
+                    <button class="role_update">Update</button>
+                </div>
         
             </div>
         </div>
