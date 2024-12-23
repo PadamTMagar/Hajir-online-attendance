@@ -22,33 +22,33 @@
         <div class="user_details">
             <form action="" name="adduser" method="POST">
 
-                <div class="name_details">
-                    <div>
-                        <label for="fname" id="fname">First Name</label>
-                        <input type="text" name="firstname" id="fistname">
+                <div class="form_row">
+                    <div class="from_group">
+                        <label for="fname" id="fname">First Name:*</label>
+                        <input type="text" name="firstname" id="fistname" placeholder="First Name">
                     </div>
 
-                    <div>
-                        <label for="mname" id="mname">Mid Name</label>
-                        <input type="text" name="midname" id="midname">
+                    <div class="from_group">
+                        <label for="mname" id="mname">Mid Name:</label>
+                        <input type="text" name="midname" id="midname" placeholder="Mid Name">
                     </div>
 
-                    <div>
-                        <label for="lname" id="lname">Last Name</label>
-                        <input type="text" name="lastname" id="lastname">
+                    <div class="from_group">
+                        <label for="lname" id="lname">Last Name:</label>
+                        <input type="text" name="lastname" id="lastname" placeholder="Last Name">
                     </div>
                 </div>
 
 
-                <div class="user_socialmed">
-                    <div>
-                        <label for="email" id="email">Email</label>
-                        <input type="email" name="emailid" id="emailid">
+                <div class="form_row">
+                    <div class="from_group">
+                        <label for="email" id="email">Email:*</label>
+                        <input type="email" name="emailid" id="emailid" placeholder="Email">
                     </div>
                     
-                    <div>
-                        <label for="number" id="num">Number</label>
-                        <input type="" name="number" id="number">
+                    <div class="from_group">
+                        <label for="number" id="num">Phone Number:*</label>
+                        <input type="" name="number" id="number" placeholder="Phone Number">
                     </div>
                 </div>
             </form>

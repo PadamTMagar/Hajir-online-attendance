@@ -912,21 +912,50 @@ tr:nth-child(even){
 
 .user_details{
     background-color: #fff;
-    margin: 10px 0px;
+    /* margin: 10px 0px; */
+    padding: 20px;
     min-height: 200px;
     width: 99.5%;
     border-radius: 8px;
     border-top: 2px #245a7f solid;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
 }
 
 
-.name_details , .user_socialmed {
+.form_row {
     display: flex;
-    justify-content: space-around;
+    gap: 20px;
 
 }
-.name_details div  , .user_socialmed div{
+.from_row .from_group{
+    flex: 1;
+}
+
+.from_group{
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.from_group label{
+    font-size: 16px;
+    color: #555;
+    margin-bottom:5px;
+}
+/* for small input box */
+.from_group label {
+
+}
+
+/* for big input box */
+.from_group label {
+
+}
+
+.from_group input{
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #717171;
+    border-radius: 4px;
 }
