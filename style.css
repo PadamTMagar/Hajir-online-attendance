@@ -950,7 +950,7 @@ h1{
 }
 
 /* for small input box */
- #num ,#classselection , #date, #gender, #marital,#blood{
+ #num ,#classselection , #dob, #gender, #marital,#blood{
     width: 230px;
 }
 
@@ -961,7 +961,7 @@ h1{
     border-radius: 4px;
     outline: none;
 }
-#date{
+#dob{
     color: black;
 }
 

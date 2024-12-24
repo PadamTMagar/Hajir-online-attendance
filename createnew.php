@@ -98,7 +98,7 @@
                 <div class="form_row">
                     <div class="form_group">
                         <label for="dateofbirth" id="dateofbirth">Date of Birth:</label>
-                        <input type="date" name="date" id="date" required>
+                        <input type="date" name="dob" id="dob" required>
                     </div>
 
                     <div class="form_group">
