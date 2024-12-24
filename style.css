@@ -950,7 +950,7 @@ h1{
 }
 
 /* for small input box */
- #num ,#classselection , #dob, #gender, #marital,#blood{
+ #num, #classselection, #dob, #gender, #marital, #blood, #profile_pic{
     width: 230px;
 }
 

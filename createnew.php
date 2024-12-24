@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form_group">
-                        <label for="lname" id="lname">Last Name:</label>
+                        <label for="lname" id="lname">Last Name:*</label>
                         <input type="text" name="lastname" id="lastname" placeholder="Last Name">
                     </div>
                 </div>
@@ -48,7 +48,12 @@
                         
                     <div class="form_group">
                         <label for="number" id="num">Phone Number:*</label>
-                        <input type="" name="number" id="number" placeholder="Phone Number" required>
+                        <input type="tel" name="number" id="number" placeholder="+977 - 9*********" required>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="picture" id="picture">Choose a profile picture:*</label>
+                        <input type="file" name="profile_pic" id="profile_pic" required>
                     </div>
                 </div>
             </div>
@@ -57,8 +62,7 @@
             <div class="role_permiss">
                 <h1>Role & Permissions</h1>
 
-                <div class="form_row">
-                    
+                <div class="form_row">                    
                     <div class="form_group">
                         <label for="username" id="username">Username:*</label>
                         <input type="text" name="user" id="user" placeholder="User Name" required>
@@ -74,6 +78,7 @@
                         <input type="password" name="confirm_pw" id="confirm_pw" placeholder="Confirm Password" required>
                     </div>
                     </div>
+
                     <div class="form_row">
                         <div class="form_group">
                             <label for="role_selection" id="role_selection">Select Role:*</label>
