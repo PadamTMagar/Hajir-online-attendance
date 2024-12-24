@@ -989,3 +989,26 @@ h1{
 .form-actions button:hover {
     background-color: #0056b3;
 }
+
+.profile_header{
+    display: flex;
+    margin:  10px 0px;
+    padding: 5px 0px;
+    gap: 20px;
+    
+}
+
+.profile_header .view_user{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.user_info{
+    background-color: #fff;
+    margin: 10px 0px;
+    min-height: 320px;
+    width: 250px;
+    border-radius: 8px;
+    border-top: 2px #245a7f solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

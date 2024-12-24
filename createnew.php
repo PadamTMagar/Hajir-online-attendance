@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form_group">
-                        <label for="mname" id="mname">Mid Name:</label>
+                        <label for="mname" id="mname">Middle Name:</label>
                         <input type="text" name="midname" id="midname" placeholder="Mid Name">
                     </div>
 
@@ -82,14 +82,14 @@
                     <div class="form_row">
                         <div class="form_group">
                             <label for="role_selection" id="role_selection">Select Role:*</label>
-                            <select name="role_selection" id="roleselection">
+                            <select name="role_selection" id="roleselection" required>
                                 <option value="">Teacher</option>
                                 <option value="">Student</option>
                             </select>
                         </div>
                         <div class="form_group">
                             <label for="class_selection" id="class_selection">Select Class:*</label>
-                            <select name="class_selection" id="classselection">
+                            <select name="class_selection" id="classselection" required>
                                 <option value="">class 1</option>
                                 <option value="">class 2</option>
                             </select>

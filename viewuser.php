@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewuser</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+<?php require_once('aetsheader.php'); ?>
+<?php require_once('aetssidebar.php'); ?>  
+
+<div class="container">
+    <div class="user_profile">
+        <div class="profile_header" >
+            <span class="view_user">View User</span>
+        </div>
+        <div class="user_info"> 
+        </div>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>
