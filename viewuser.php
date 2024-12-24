@@ -16,7 +16,26 @@
         <div class="profile_header" >
             <span class="view_user">View User</span>
         </div>
-        <div class="user_info"> 
+        <div class="user_info">
+        <div class="profile_pannel">
+                        <img src="assets/profilepic.jpg" alt="ProfilePic" class="profile_pic1" >
+                        <div class="user_name1">Padam Thapa Magar</div>
+                        <div class="role_of_user">Student</div>
+                    </div>
+                    <div class="details_pannel">
+                        <div class="pannel_row">
+                            <span>Username</span>
+                            <span class="value">Padam Thapa Magar</span>
+                        </div>
+                        <div class="pannel_row">
+                            <span>Email</span>
+                            <span class="value">padamtmgr567@gmail.com</span>
+                        </div>
+                        <div class="pannel_row">
+                            <span>Phone</span>
+                            <span class="value">9803819575</span>
+                        </div>
+                    </div>
         </div>
     </div>
     </div>

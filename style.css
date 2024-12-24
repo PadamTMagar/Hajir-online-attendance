@@ -158,13 +158,13 @@ header{
 }
 
 .profile_pic{
-    width: 90px;
-    height: 90px;
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     margin: 5px auto;
     display: block;
-    border: 1px solid black;
-
+    border: 3px solid white;
+    box-shadow:0 0 0 3px rgb(163, 161, 161);
 }
 .user_name{
     margin-top: 10px;
@@ -1006,9 +1006,58 @@ h1{
 .user_info{
     background-color: #fff;
     margin: 10px 0px;
-    min-height: 320px;
-    width: 250px;
+    min-height: 330px;
+    width: 280px;
     border-radius: 8px;
     border-top: 2px #245a7f solid;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile_pannel{
+    padding: 10px 10px 0 10px ;
+    border-bottom:1px white;
+}
+
+.profile_pic1{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 5px auto;
+    display: block;
+    border: 3px solid white;
+    box-shadow:0 0 0 3px rgb(163, 161, 161);
+}
+
+.user_name1{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.role_of_user{
+    text-align: center;
+    margin-top: 5px;
+    opacity: 75%;
+    border-bottom:2px solid rgb(163, 161, 161);
+}
+
+.details_pannel{
+    margin:0px 5px;
+}
+
+.details_pannel .pannel_row{
+    display: flex;
+    justify-content: space-between;
+    border-bottom:2px solid rgb(163, 161, 161);
+    margin: 5px;
+}
+
+.details_pannel .pannel_row span{
+    padding:6px 0px;
+    font-weight: 500;
+}
+
+.details_pannel .pannel_row .value{
+    font-weight: 400;
+    color:#0056b3;
 }
