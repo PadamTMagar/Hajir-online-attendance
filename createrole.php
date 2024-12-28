@@ -7,13 +7,13 @@ include("aetssidebar.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Role</title>
+    <title>Create Role</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>Edit Role</h1>  <br>
+        <h1>Create Role</h1>  <br>
         <div class="rolebox">
             <label for="contact-type">Role Name:*</label> <br> <br> 
                     <input type="text" id="role_name" class="role_name" placeholder="Role Name" style="padding:8px"><br><br>
