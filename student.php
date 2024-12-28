@@ -21,7 +21,7 @@
                 <span>All Student</span>
                 <div class="add">
                     <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
-                    <button onclick="location.href='createnew.php';">Add</button>       
+                    <button onclick="location.href='createuser.php';">Add</button>       
                 </div> 
         </div>
     </div>

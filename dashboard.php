@@ -53,10 +53,10 @@
         </div>
 
 
-        <div class="total  absent">
+        <div class="total class">
             <div class="icon"><i class="fa-solid fa-user-slash"></i></div>
             <div class="content">
-                <div class="title">Absent</div>
+                <div class="title">Classes</div>
                 <div class="value">0</div>
             </div>
         </div>

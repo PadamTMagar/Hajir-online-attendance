@@ -192,7 +192,7 @@
         </form>    
     </div>
     <div class="form-actions">
-                <button type="submit">Submit</button>
+                <button type="submit">Create</button>
     </div>
 </div>
     

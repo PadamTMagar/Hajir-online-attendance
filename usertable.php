@@ -8,10 +8,8 @@ $table = "CREATE TABLE user_db (
                 User_name VARCHAR(30) NOT NULL, 
                 email VARCHAR(30) NOT NULL, 
                 passwd VARCHAR(255) NOT NULL, 
-                user_rol VARCHAR(255) NOT NULL
+                user_role VARCHAR(20) NOT NULL
 )";
-
-
 
 $result = mysqli_query($conn, $table);
 

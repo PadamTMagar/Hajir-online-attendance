@@ -21,7 +21,7 @@
                 <span>All Roles</span>
                 <div class="add">
                     <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
-                    <button>Add</button>    
+                    <button onclick="location.href='createrole.php'">Add</button>    
                 </div> 
         </div>
         
