@@ -49,7 +49,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo$row['id']; ?></td>
-                                        <td><?php echo$row['User_name']; ?></td>
+                                        <td><?php echo$row['user']; ?></td>
                                         <td><?php echo$row['email']; ?></td>
                                         <td><?php echo$row['user_role']; ?></td>
                                         <td class="action_row">

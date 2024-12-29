@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 
     <div id="form">
         <h1>Login</h1>
-        <form name="form" action="" method="POST">
+        <form name="form" action="index.php" method="POST">
             <div class="input_container">
                 <i class="fa-solid fa-user"></i>
                 <input type="text" name="User_name" id="User" placeholder="Username">    

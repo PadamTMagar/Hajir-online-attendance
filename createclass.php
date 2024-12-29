@@ -28,22 +28,32 @@ include("aetssidebar.php");
             <div class="class_details">
                 <div class="form_row">
                     <div class="form_group">
-                        <label for="guardian_name" id="guardian_name">Class Name:</label>
-                        <input type="text" name="guardian_name" id="guardian_name" placeholder="Class Name" required>
+                        <label for="class_name" id="class_name">Class Name:</label>
+                        <input type="text" name="class_name" id="class_name" placeholder="Class Name" required>
                     </div>
+
                     <div class="form_group">
-                        <label for="guardian_contact" id="guardian_contact">Class Teacher:</label>
-                        <select name="classteacher" id="classteacher">
+                        <label for="class_teacher" id="class_teacher">Class Teacher:</label>
+                        <select name="class_teacher" id="class_teacher">
                             <option value="">Please Select</option>
                             <option value="">hari</option>
                             <option value="">shyam</option>
                         </select>
+                    </div>
 
+                    <div class="form_group">
+                        <label for="class_section" id="class_section">Section Name:</label>
+                        <input type="text" name="class_section" id="class_section" placeholder="Class Section" required>
                     </div>
                 </div>
-            </div>
 
+                </div>
+            </div>
         </div>
+
+        <div class="update_button">
+                    <button class="role_update">Create</button>
+                </div>
     </div>
 </div>
 </body>
