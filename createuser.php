@@ -83,6 +83,7 @@
                         <div class="form_group">
                             <label for="role_selection" id="role_selection">Select Role:*</label>
                             <select name="role_selection" id="roleselection" required>
+                                <option value="">Please Select</option>
                                 <option value="">Teacher</option>
                                 <option value="">Student</option>
                             </select>
@@ -90,6 +91,7 @@
                         <div class="form_group">
                             <label for="class_selection" id="class_selection">Select Class:*</label>
                             <select name="class_selection" id="classselection" required>
+                                <option value="">Please Select</option>
                                 <option value="">class 1</option>
                                 <option value="">class 2</option>
                             </select>
@@ -109,6 +111,7 @@
                     <div class="form_group">
                             <label for="gender" id="gender">Gender:</label>
                             <select name="gender" id="gender">
+                                <option value="">Please Select</option>
                                 <option value="">Male</option>
                                 <option value="">Female</option>
                                 <option value="">Other</option>
@@ -118,6 +121,7 @@
                     <div class="form_group">
                             <label for="marital" id="marital">Marital Status:</label>
                             <select name="marital" id="marital">
+                                <option value="">Please Select</option>
                                 <option value="">Married</option>
                                 <option value="">Unmarried</option>
                                 <option value="">Divorced</option>

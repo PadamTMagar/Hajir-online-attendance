@@ -33,7 +33,12 @@ include("aetssidebar.php");
                     </div>
                     <div class="form_group">
                         <label for="guardian_contact" id="guardian_contact">Class Teacher:</label>
-                        <input type="text" name="guardian_contact" id="guardian_contact" placeholder="Class Teacher" required>
+                        <select name="classteacher" id="classteacher">
+                            <option value="">Please Select</option>
+                            <option value="">hari</option>
+                            <option value="">shyam</option>
+                        </select>
+
                     </div>
                 </div>
             </div>
