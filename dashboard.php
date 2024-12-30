@@ -1,15 +1,16 @@
 <?php
+$username = '';
+if(isset($_SESSION['user'])){
+    $username = $_SESSION['user'];
+}
 
-// require_once('filter.php');
 ?>
-
-<!-- <?php require_once('filter.php');?> -->
 
 
 
 <div class="dashcontent">
     <div class="greeting">
-        <span>Hi, User</span>
+        <span>Hi,  <?php echo $username;?>  </span>
         <div class="greet">
             <div class="greetele" id="greet"></div>
             <div class="msg" id="msg"></div>

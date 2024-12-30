@@ -423,6 +423,16 @@ header{
     color: rgb(236, 40, 40) ;
 }
 
+
+/*********************** error message and success message *******************************/
+.error_msg{
+    margin-top: 10px;
+    color: rgb(221, 2, 2);
+}
+.succes_msg{
+    margin-top: 10px;
+    color: green;
+}
 @media screen and (max-width: 700px) {
     #form{
         width:65%;

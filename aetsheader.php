@@ -32,7 +32,7 @@
                         <div class="user_name">Padam Thapa Magar</div>
                     </div>
                     <a href="#">Profile</a>
-                    <a href="#">Logout</a>
+                    <a href="logout.php">Logout</a>
                 </div>
     
     </div>

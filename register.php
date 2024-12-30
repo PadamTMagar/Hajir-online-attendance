@@ -1,7 +1,7 @@
 <?php 
 include("aetsconn.php");
 $error = '';
-$user_msg ='';
+$succes_msg ='';
 
 if(isset($_POST['submit'])){
 
@@ -22,21 +22,21 @@ if(isset($_POST['submit'])){
     }
     else{
 
-        $verify_query = mysqli_query($conn , "SELECT User_name FROM user_db WHERE User_name='$User_name");
+        $verify_query = mysqli_query($conn , "SELECT user FROM user_db WHERE user='$User_name'");
 
     if(mysqli_num_rows($verify_query) !=0 ){
-        $user_msg = "This username is already taken, Try another one.";
+        $error = "This username is already taken, Try another one.";
     }
     else{
 
         $hashedpw = password_hash($passwd ,PASSWORD_BCRYPT);
 
-        $insert_data ="INSERT INTO user_db (user, email, passwd, user_role) VALUES('$User_name', '$email', '$hasedpw', '$user_role')"; 
+        $insert_data ="INSERT INTO user_db (user, email, passwd, user_role) VALUES('$User_name', '$email', '$hashedpw', '$user_role')"; 
         if(mysqli_query($conn ,$insert_data)){
-            $user_msg = "Registration Successfull!";
+            $succes_msg = "Registration Successfull!";
         }
         else{
-            $error = "Error: " .mysli_error($conn);
+            $error = "Error: " .mysqli_error($conn);
         }
         }
     }
@@ -62,12 +62,12 @@ if(isset($_POST['submit'])){
 <body>
 
     <div class="login_button">
-        <button class="register_button" onclick="location.href='Loginform.php';">login</button>
+        <button class="register_button" onclick="location.href='Login.php';">login</button>
     </div>
 
     <div id="form">
         <h1>Register As Admin</h1>
-        <form name="form" action="loginform.php" method="POST">
+        <form name="form" action="" method="POST">
             <div class="input_container">
                 <i class="fa-solid fa-user"></i>
                 <input type="text" name="User_name" id="User" placeholder="Username">    
@@ -90,8 +90,10 @@ if(isset($_POST['submit'])){
 
 
             <input type="Submit" id="btn" value="Register" name="submit">
-                        <?php echo $error;?> 
-                        <?php echo htmlspecialchars($user_msg); ?>
+
+                <div class="error_msg"><?php echo $error;?></div>
+                <div class="succes_msg"><?php echo $succes_msg;?></div>
+
         </form>
     </div>
     
