@@ -47,6 +47,7 @@ if(isset($_POST['submit'])){
 
 
             <input type="Submit" id="btn" value="Login" name="submit">
+                        <?php echo $error;?> 
         </form>
     </div>
     

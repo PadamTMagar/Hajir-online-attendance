@@ -1,19 +1,46 @@
 <?php 
 include("aetsconn.php");
+$error = '';
+$user_msg ='';
 
 if(isset($_POST['submit'])){
 
     $User_name = $_POST['User_name'];
+    $email = $_POST['email'];
     $passwd = $_POST['passwd']; 
-    $sql = "SELECT * from user_db where User_name='$User_name' and passwd = '$passwd'";
-    $result = mysqli_query($conn , $sql);
-   echo $count = mysqli_num_rows($result);
-    if($count>0){
-            $row = mysqli_fetch_assoc($result);
-    }else{
-        $error = 'Please enter correct login details';
+    $confirm_password = $_POST['confirm_passwd'];
+    $user_role = 'admin';
+
+    if (empty($User_name) || empty($email) || empty($passwd) || empty($confirm_password))  {
+        $error = "All field are required!";
     }
-};
+    elseif(!filter_var($email ,FILTER_VALIDATE_EMAIL)){
+        $error = "Invalid Email!";
+    }
+    elseif($passwd !== $confirm_password){
+        $error = "The password didnt match!";
+    }
+    else{
+
+        $verify_query = mysqli_query($conn , "SELECT User_name FROM user_db WHERE User_name='$User_name");
+
+    if(mysqli_num_rows($verify_query) !=0 ){
+        $user_msg = "This username is already taken, Try another one.";
+    }
+    else{
+
+        $hashedpw = password_hash($passwd ,PASSWORD_BCRYPT);
+
+        $insert_data ="INSERT INTO user_db (user, email, passwd, user_role) VALUES('$User_name', '$email', '$hasedpw', '$user_role')"; 
+        if(mysqli_query($conn ,$insert_data)){
+            $user_msg = "Registration Successfull!";
+        }
+        else{
+            $error = "Error: " .mysli_error($conn);
+        }
+        }
+    }
+}    
 ?> 
 
 
@@ -40,7 +67,7 @@ if(isset($_POST['submit'])){
 
     <div id="form">
         <h1>Register As Admin</h1>
-        <form name="form" action="index.php" method="POST">
+        <form name="form" action="loginform.php" method="POST">
             <div class="input_container">
                 <i class="fa-solid fa-user"></i>
                 <input type="text" name="User_name" id="User" placeholder="Username">    
@@ -58,12 +85,13 @@ if(isset($_POST['submit'])){
 
             <div class="input_container">
                 <i class="fa-solid fa-lock"></i>
-                <input type="password" name="passwd" id="passwd" placeholder="Confirm Password"> 
+                <input type="password" name="confirm_passwd" id="confirm_passwd" placeholder="Confirm Password"> 
             </div> 
 
 
             <input type="Submit" id="btn" value="Register" name="submit">
                         <?php echo $error;?> 
+                        <?php echo htmlspecialchars($user_msg); ?>
         </form>
     </div>
     
