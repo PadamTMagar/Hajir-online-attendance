@@ -23,17 +23,23 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register As Admin</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <style>
+        body{
+            overflow: hidden;
+        }
+    </style>
 </head>     
 <body>
+
     <div class="login_button">
-        <button class="register_button" onclick="location.href='register.php';">Register</button>
+        <button class="register_button" onclick="location.href='Loginform.php';">login</button>
     </div>
 
     <div id="form">
-        <h1>Login</h1>
+        <h1>Register As Admin</h1>
         <form name="form" action="index.php" method="POST">
             <div class="input_container">
                 <i class="fa-solid fa-user"></i>
@@ -41,12 +47,23 @@ if(isset($_POST['submit'])){
             </div>
 
             <div class="input_container">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Email"> 
+            </div> 
+
+            <div class="input_container">
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="passwd" id="passwd" placeholder="Password"> 
+            </div>
+
+            <div class="input_container">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="passwd" id="passwd" placeholder="Confirm Password"> 
             </div> 
 
 
-            <input type="Submit" id="btn" value="Login" name="submit">
+            <input type="Submit" id="btn" value="Register" name="submit">
+                        <?php echo $error;?> 
         </form>
     </div>
     

@@ -391,18 +391,38 @@ header{
 
 #btn {
 
-    color: white;
-    background-color: #245a7f;
+    color: #245a7f;
+    background-color: white;
     margin-top: 10px;
     padding:10px 25px;
     border-radius: 50px;
     cursor:pointer ;
 }
 #btn:hover{
-    color: #245a7f;
-    background-color: #fff;
+    color: #fff;
+    background-color: #245a7f;
     /* border-color: #3c3d4f; */
 }
+.login_button{
+    position: absolute;
+    top: 30px;
+    right: 80px;
+}
+.login_button .register_button{
+    width: 100px;
+    height: 40px;
+    color:#fff;
+    font-weight: bold;
+    background-color: rgb(236, 40, 40);
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.login_button .register_button:hover {
+    background-color: white;
+    color: rgb(236, 40, 40) ;
+}
+
 @media screen and (max-width: 700px) {
     #form{
         width:65%;

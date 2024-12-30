@@ -41,6 +41,7 @@ include("aetssidebar.php");
                         </select>
                     </div>
 
+                    
                     <div class="form_group">
                         <label for="class_section" id="class_section">Section Name:</label>
                         <input type="text" name="class_section" id="class_section" placeholder="Class Section" required>
