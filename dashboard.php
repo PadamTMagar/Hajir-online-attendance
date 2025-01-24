@@ -9,8 +9,8 @@ if(isset($_SESSION['user'])){
 
 <html>
     <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0/chart.js" integrity="sha512-heziW2w3+/erezjMdHOyvg67lCz19RzOQRy118vTH9+DU6GS56G2FdQJDrGlXuCKGpH+yPdWZajxK+IoqvjYjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
 </head>
     <div class="dashcontent">
     <div class="greeting">
@@ -78,14 +78,12 @@ if(isset($_SESSION['user'])){
                 <span>Attendance</span>
             </div>
 
-            <div class="chart" id="chart">
-         
-                <canvas id="atten_chart" width="600" height="400"></canvas>
-
+            <div class="chart" id="chart" >
             <div class="details">
+                <canvas id="atten_chart" style="width:1%; height:1%;"></canvas>
                 <ul>
-                    <li>Total Present <span class="present" id="totalpresent">180</span></li>
-                    <li>Total Absent <span class="absent" id="totalabsent">40</span></li>
+                    <li>Total Present <span class="present" id="totalpresent">110</span></li>
+                    <li>Total Absent <span class="absent" id="totalabsent">80</span></li>
                 </ul>
             </div>
         </div>
@@ -103,7 +101,7 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="line_value">
-
+                <canvas id="linegraph" style="width:100%; height:220px"></canvas>
             </div>
         </div>
     </div>
@@ -145,8 +143,9 @@ if(isset($_SESSION['user'])){
 </script>
 
 <script>
-    var totalpresents  = document.getElementById("totalpresent");
-    var totalabsents = document.getElementById("totalabsent");
+    
+    var totalpresents  = parseInt(document.getElementById("totalpresent").innerText);
+    var totalabsents = parseInt(document.getElementById("totalabsent").innerText);
 
     var xvalue = ["Present" , "Absent"];
     var yvalue = [totalpresents , totalabsents];
@@ -165,15 +164,79 @@ if(isset($_SESSION['user'])){
         options: {
                 plugins: {
                     legend: {
-                        display: false 
+                        display: true 
                     },
                     title: {
                         display: false 
                     }
                 }
             }
-
     });
+</script>
+
+
+
+
+<script>
+    function currentMonth() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth();
+        const startDate = new Date(year, month, 1);
+        const lastDate = new Date(year, month + 1, 0);
+        return { startDate, lastDate };
+    }
+
+    function dateRange(startDate, lastDate) {
+        const dates = [];
+        let currentDate = new Date(startDate);
+        while (currentDate <= lastDate) {
+            dates.push(currentDate.toISOString().split('T')[0]);
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return dates;
+    }
+
+    function generateRandomData(length) {
+        return Array.from({ length }, () => Math.floor(Math.random() * 100) + 1);
+    }
+
+    function renderLineChart() {
+        const { startDate, lastDate } = currentMonth();
+        const dates = dateRange(startDate, lastDate);
+        const dataPoints = generateRandomData(dates.length);
+
+        new Chart(document.getElementById("linegraph").getContext('2d'), {
+            type: "line",
+            data: {
+                labels: dates,
+                datasets: [{
+                    data: dataPoints,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: { display: false }      
+                    },
+                    y: {
+                        grid: { display: true },
+                        ticks: { display: true },
+                    }
+                },
+                plugins: {
+                    legend: { 
+                        display: false,        
+                    }
+                }
+            }
+        });
+    }
+    renderLineChart();
 </script>
 
 </html>

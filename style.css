@@ -615,6 +615,7 @@ instead of using this i have use break tag <br> */
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-top: 2px #245a7f solid;
+    display: inline-block;
 }
 .attendance .atten_header {
     display:flex ;
@@ -628,7 +629,6 @@ instead of using this i have use break tag <br> */
     margin-top: 15px;
     padding-left: 2px;
 }
-
 
 .monthly_report{
     margin: 20px 0px;
@@ -1205,5 +1205,6 @@ h1{
 
 /************************************ calendar ************************************/
 .calendarbox{
-
+    
 }
+
