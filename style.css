@@ -51,7 +51,7 @@ header{
 }
 
 
-/* Nav Bar CSS*/
+/*************************************************************** Nav Bar CSS *********************************************/
 .navbar{
     position: absolute;
     right: 0%;
@@ -186,7 +186,7 @@ header{
 }
 
 
-/* Side Bar Css*/
+/******************************************************************** Side Bar Css*************************************************/
 
 .wrapper{
     display: flex;
@@ -298,12 +298,12 @@ header{
 }
 
 
-/*detailsform csss*/
+/**************************************** detailsform csss ****************************************************/
 
 .rolepannel{
     margin: 0%;
 }
-/* Login pannel */
+/***************************************************** Login pannel *******************************************/
 
 
 
@@ -439,9 +439,9 @@ header{
     }
 }
 
-/* detail pannel */
+/**************************************************** detail pannel *******************************************************/
 
-/* rolepannel */
+/*********************************************************** rolepannel ****************************************************/
 
 .rolebox{
     padding: 10px;
@@ -518,7 +518,7 @@ instead of using this i have use break tag <br> */
 }
 
 
-/* dishboard content  */
+/********************************************************* dishboard content  *************************************************/
 .dashcontent{
     padding-left: 20px;
     height: 100vh;
@@ -624,6 +624,11 @@ instead of using this i have use break tag <br> */
     border-bottom: #3c3d4f solid;
 }
 
+.attendance .details{
+    margin-top: 15px;
+    padding-left: 2px;
+}
+
 
 .monthly_report{
     margin: 20px 0px;
@@ -649,7 +654,7 @@ instead of using this i have use break tag <br> */
 }
 
 
-/* role */
+/************************************************* role *****************************************************/
 
 .role_header{
     display: flex;
@@ -1194,4 +1199,11 @@ h1{
     margin: 15px 15px;
     padding: 0px 10px;
     font-weight: 500;
+}
+
+
+
+/************************************ calendar ************************************/
+.calendarbox{
+
 }

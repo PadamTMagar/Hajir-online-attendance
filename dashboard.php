@@ -7,8 +7,12 @@ if(isset($_SESSION['user'])){
 ?>
 
 
-
-<div class="dashcontent">
+<html>
+    <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+</head>
+    <div class="dashcontent">
     <div class="greeting">
         <span>Hi,  <?php echo $username;?>  </span>
         <div class="greet">
@@ -75,13 +79,13 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="chart" id="chart">
-                <canvas class="atten_chart"></canvas>
-        
+         
+                <canvas id="atten_chart" width="600" height="400"></canvas>
 
             <div class="details">
                 <ul>
-                    <li>Total Present <span class="value">100</span></li>
-                    <li>Total Present <span class="value">100</span></li>
+                    <li>Total Present <span class="present" id="totalpresent">180</span></li>
+                    <li>Total Absent <span class="absent" id="totalabsent">40</span></li>
                 </ul>
             </div>
         </div>
@@ -103,8 +107,7 @@ if(isset($_SESSION['user'])){
             </div>
         </div>
     </div>
-
-
+</div>
 
 
 
@@ -141,5 +144,37 @@ if(isset($_SESSION['user'])){
   
 </script>
 
+<script>
+    var totalpresents  = document.getElementById("totalpresent");
+    var totalabsents = document.getElementById("totalabsent");
 
+    var xvalue = ["Present" , "Absent"];
+    var yvalue = [totalpresents , totalabsents];
+    var colors = ["#00aba9", "#b91d47"];
+
+
+    new Chart(document.getElementById("atten_chart"),{
+        type: "doughnut",
+        data:{
+            labels : xvalue,
+            datasets: [{
+                backgroundColor: colors,
+                data: yvalue
+            }]
+        },
+        options: {
+                plugins: {
+                    legend: {
+                        display: false 
+                    },
+                    title: {
+                        display: false 
+                    }
+                }
+            }
+
+    });
 </script>
+
+</html>
+
