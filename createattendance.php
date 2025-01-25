@@ -13,18 +13,16 @@ include("aetssidebar.php");
 </head>
 <body>
     <div class="container">
-        <div class="addatten"> <!--rolepannel-->
-            <div class="addatten_header" >
-                <span class="addatten">Teachers</span>
-                <span class="addatten_mgs">Manage Teachers</span>
-            </div>
-        <div class="addatten_content">
-            <div class="addatten_title">
-                    <span>All Teachers</span>
-                     
-            </div>
+        <div class="add_attendance">
+            <div class="add_header">
+                <span class="markattendance">Mark Attendance</span>
         </div>
-        </div>
+    </div>
+    </div>
+
+        <div class="update_button">
+                    <button class="role_update">Add</button>
+                </div>
     </div>
 </body>
 </html>

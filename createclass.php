@@ -18,7 +18,6 @@ include("aetssidebar.php");
         <div class="addclass">
             <div class="class_header" >
                 <span class="class">Classes</span>
-                <span class="class_msg">Manage Classes</span>
             </div>
 
         <div class="class_content">
