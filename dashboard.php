@@ -79,8 +79,9 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="chart" id="chart" >
+            <canvas id="atten_chart" style="width:200px; height:200px;"></canvas>
+            
             <div class="details">
-                <canvas id="atten_chart" style="width:1%; height:1%;"></canvas>
                 <ul>
                     <li>Total Present <span class="present" id="totalpresent">110</span></li>
                     <li>Total Absent <span class="absent" id="totalabsent">80</span></li>
@@ -142,6 +143,8 @@ if(isset($_SESSION['user'])){
   
 </script>
 
+
+<!-- doughnut chart script -->
 <script>
     
     var totalpresents  = parseInt(document.getElementById("totalpresent").innerText);
@@ -176,7 +179,7 @@ if(isset($_SESSION['user'])){
 
 
 
-
+<!-- line graph script -->
 <script>
     function currentMonth() {
         const now = new Date();

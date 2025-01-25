@@ -615,7 +615,7 @@ instead of using this i have use break tag <br> */
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-top: 2px #245a7f solid;
-    display: inline-block;
+
 }
 .attendance .atten_header {
     display:flex ;
@@ -931,7 +931,7 @@ tr:nth-child(even){
     all: unset;
 }
 
-/* adduser form */
+/************************************************* adduser form ******************************************/
 
 .add_header {
     display: flex;
@@ -1202,8 +1202,61 @@ h1{
 }
 
 
+/************************************************ class table **************************************/
+.class_header{
+    display: flex;
+    margin:  10px 0px;
+    padding: 5px 0px;
+    gap: 20px;
+    
+}
 
-/************************************ calendar ************************************/
+.class_header .classeslist{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.class_header .class_mgs{
+    opacity: 70%;  
+    margin-top: 15px;
+}       
+.class_content{
+    background-color: #fff;
+    margin: 10px 0px;
+    min-height: 480px;
+    width: 99.5%;
+    border-radius: 8px;
+    border-top: 2px #245a7f solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+.class_title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.class_title span{
+    font-size: 20px;
+}
+
+.class_title .add {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin: 2px;
+    padding: 7px;
+    background-color: #0056b3;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.class_title .add button {
+    all: unset;
+}
+
+/************************************************ calendar **************************************/
 .calendarbox{
     
 }
