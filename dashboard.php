@@ -79,7 +79,7 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="chart" id="chart" >
-            <canvas id="atten_chart" style="width:200px; height:200px;"></canvas>
+            <canvas id="atten_chart" style="width:100px; height:100px;"></canvas>
             
             <div class="details">
                 <ul>
