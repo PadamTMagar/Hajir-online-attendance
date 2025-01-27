@@ -1,3 +1,5 @@
+<?php require_once('aetsconn.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
