@@ -4,12 +4,12 @@
             <ul>  
                 <div class="navlist">
                      <span id="hovertext">User</span> 
-                    <li><a href="#"><i class="fa-duotone fa-solid fa-users"></i></a></li> 
+                    <li><a href="user.php"><i class="fa-duotone fa-solid fa-users"></i></a></li> 
                 </div>
 
                 <div class="navlist">
                     <span id="hovertext">Calendar</span>
-                    <li><a href="#"><i class="fa-regular fa-calendar-days"></i></a></li>
+                    <li><a href="calendar.php"><i class="fa-regular fa-calendar-days"></i></a></li>
                 </div>
 
                 <div class="navlist">
