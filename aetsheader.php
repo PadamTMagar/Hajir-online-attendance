@@ -9,7 +9,7 @@
 
                 <div class="navlist">
                     <span id="hovertext">Calendar</span>
-                    <li><a href="calendar.php"><i class="fa-regular fa-calendar-days"></i></a></li>
+                    <li id="calanderpopup"><a href="#"><i class="fa-regular fa-calendar-days"></i></a></li>
                 </div>
 
                 <div class="navlist">
@@ -71,5 +71,11 @@
             if(!button.contains(event.target) && !drop.contains(event.target))  {
                 drop.style.display = "none";
             }
+        });
+     </script>
+
+     <script>
+        document.getElementById("calanderpopup" ).addEventListener("click",function(){
+            window.open("calendar.php")
         });
      </script>

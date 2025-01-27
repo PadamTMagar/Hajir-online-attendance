@@ -1260,6 +1260,17 @@ h1{
 
 
 /************************************************ calendar **************************************/
+
+/* .overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.5);
+    z-index: 999;
+} */
 .calendarbox{
     background-color:#fff ;
     width: 800px;
@@ -1276,12 +1287,10 @@ h1{
 
 
 header .calandar-current-date{
-    /* font: 800px; */
     font-size: larger;
     font-weight: bold;
-    color:#007bff;
+    color:#0056b3;
 }
-
 
 header .calandar-navbar{
     display: flex;
@@ -1363,7 +1372,7 @@ header .calandar-navbar span{
 }
 
 .dates li.active::before{
-    background: #6332c5;
+    background: #0056b3;
 }
 
 .dates li:not(.active):hover::before{
