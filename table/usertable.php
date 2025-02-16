@@ -7,7 +7,10 @@ $table = "CREATE TABLE userlist(
     midname VARCHAR(50),
     lastname VARCHAR(50) NOT NULL,
     emailid VARCHAR(50) NOT NULL UNIQUE,
-    number INT(10) NOT NULL,
+    phone_number INT(10) NOT NULL,
+    profile_pic VARCHAR(255) NOT NULL,
     
+
+
 )";
 ?> 
