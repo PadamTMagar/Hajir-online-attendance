@@ -9,8 +9,9 @@ $table = "CREATE TABLE userlist(
     emailid VARCHAR(50) NOT NULL UNIQUE,
     phone_number INT(10) NOT NULL,
     profile_pic VARCHAR(255) NOT NULL,
+    user VARCHAR(50) NOT NULL UNIQUE,
+    passwd VARCHAR(50) NOT NULL , 
     
-
 
 )";
 ?> 
