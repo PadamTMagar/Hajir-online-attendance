@@ -1,4 +1,35 @@
-<?php require_once('aetsconn.php') ?>
+<?php require_once('aetsconn.php');
+$error = '';
+$succes_msg = '';
+
+if(isset($_POST['submit'])){
+    $f_name = $_POST['firstname'];
+    $m_name = $_POST['midname'];
+    $l_name = $_POST['lastname'];
+    $email = $_POST['emailid'];
+    $number = $_POST['phone_number'];
+    $pic = $_POST['profile_pic'];
+    $class = $_POST['class_selection'];
+    $dob = $_POST['dob'];
+    $gender= $_POST['gender'];
+    $marital = $_POST['marital'];
+    $blood = $_POST['blood'];
+    $alter_contact = $_POST['alter_contact'];
+    $perm_address = $_POST['perm_address'];
+    $temp_address = $_POST['temp_address'];
+    $father_name = $_POST['father_name'];
+    $father_occupation = $_POST['father_occupation'];
+    $father_contact = $_POST['father_contact'];
+    $mother_name = $_POST['mother_name'];
+    $mother_contact = $_POST['mother_contact'];
+    $guardian_name = $_POST['guardian_name'];
+    $guardian_contact= $_POST['guardian_contact'];
+}
+
+
+$insert_data = "INSERT INTO userlist(firstname,midname, lastname, emailid, phone_number, profile_pic , class_selection , dob , gender, marital, blood , alter_contact, perm_address, temp_address , father_name, father_occupation , father_contact, mother_name , mother_contact , guardian_name , guardian_contact) 
+VALUES('$f_name' '$m_nam' '$l_name' '$email' '$number' '$pic' '$class' '$dob' '$gender' '$marital' '$blood' '$alter_contact' '$perm_address' '$temp_address' '$father_name' '$father_occupation' '$father_contact' '$mother_name' '$mother_contact' '$guardian_name ' '$guardian_contact')";
+?>
 
 <!DOCTYPE html>
 <html lang="en">

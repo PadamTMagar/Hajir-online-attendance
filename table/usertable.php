@@ -25,8 +25,7 @@ $table = "CREATE TABLE userlist(
     mother_name VARCHAR(50) NOT NULL,
     mother_contact VARCHAR(20) NOT NULL,
     guardian_name VARCHAR(20),
-    guardian_contact VARCHAR(20),
-    crated_at TIMESTAMP DEFALUT CURRENT_TIMESTAMP
+    guardian_contact VARCHAR(20)
 
 )";
 
@@ -43,4 +42,4 @@ else {
 mysqli_close($conn);
 ?>
 
- 
+
