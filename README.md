@@ -1,3 +1,3 @@
 # This is our attendance Project , named hajir  .
-# DEVELOPED BY PADAM ONLY AND PEMBA
+# DEVELOPED BY PADAM AND PEMBA
 
