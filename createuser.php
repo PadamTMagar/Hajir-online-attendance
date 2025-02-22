@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="form_group">
-                        <label for="per_address" id="per_address">Permanent Address:</label>
+                        <label for="per_address" id="perm_address">Permanent Address:</label>
                         <input type="text" name="per_address" id="per_address" placeholder="Permanent Address" required>
                     </div>
 
@@ -160,8 +160,8 @@
                     </div>
 
                     <div class="form_group">
-                        <label for="father_occupaion" id="father_occupaion">Father's Occupation:</label>
-                        <input type="text" name="father_occupaion" id="father_occupaion" placeholder="Father's Occupation" required>
+                        <label for="father_occupation" id="father_occupation">Father's Occupation:</label>
+                        <input type="text" name="father_occupation" id="father_occupation" placeholder="Father's Occupation" required>
                     </div>
 
                     <div class="form_group">

@@ -9,15 +9,15 @@ $table = "CREATE TABLE userlist(
     emailid VARCHAR(50) NOT NULL UNIQUE,
     phone_number INT(10) NOT NULL,
     profile_pic VARCHAR(255) NOT NULL,
-    user VARCHAR(50) NOT NULL UNIQUE,
-    passwd VARCHAR(50) NOT NULL ,
-    class_selection 
+    user VARCHAR(50) NOT NULL UNIQUE,  -- another database tabel
+    passwd VARCHAR(50) NOT NULL , -- another database table
+    class_selection ENUM('class1' , 'class2') NOT NULL,
     dob DATE NOT NULL,
     gender ENUM('Male' , 'Female' , 'Other') NOT NULL,
     marital ENUM('Married' , 'Unmarried' , 'Divorced')  ,
     blood VARCHAR(10) NOT NULL,
     alter_contact VARCHAR(20),
-    per_address VARCHAR(255) NOT NULL ,
+    perm_address VARCHAR(255) NOT NULL ,
     temp_address VARCHAR(255) NOT NULL ,
     father_name VARCHAR(50) NOT NULL ,
     father_occupation VARCHAR(50) NOT NULL ,
