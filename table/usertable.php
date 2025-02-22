@@ -29,4 +29,18 @@ $table = "CREATE TABLE userlist(
     crated_at TIMESTAMP DEFALUT CURRENT_TIMESTAMP
 
 )";
-?> 
+
+$result = mysqli_query($conn  , $table);
+
+if ($result) {
+    echo "Table created successfully";
+} 
+
+else {
+    echo "Unsuccessful creation of table: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+
+ 
