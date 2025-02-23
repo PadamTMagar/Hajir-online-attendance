@@ -28,9 +28,9 @@ if (isset($_POST['submit']) && isset($_FILES["profile_pic"])) {
     $folder = "profilePic/". $pic_name;        
             // echo $folder;
     if (move_uploaded_file($temp_name, $folder)) {
-        echo "File uploaded successfully.";
+        $succes_msg= "File uploaded successfully.";
     } else {
-        echo "Error uploading file.";
+        $error= "Error uploading file.";
         }
     $class = $_POST['class_selection'];
     $dob = $_POST['dob'];
@@ -58,8 +58,15 @@ if (isset($_POST['submit']) && isset($_FILES["profile_pic"])) {
     }
 }
 else {
-    echo "No file uploaded.";
+    $error= "No file uploaded.";
 }
+                        $sql = "SELECT * FROM role_db";
+                        $result = mysqli_query($conn , $sql);
+                        $roles = [];
+                        while($role = mysqli_fetch_assoc($result)){
+                            $roles[] = $role;
+                        }
+
 ?>
 
 
@@ -135,8 +142,11 @@ else {
                             <label for="role_selection" id="role_selection">Select Role:*</label>
                             <select name="role_selection" id="roleselection" required>
                                 <option value="">Please Select</option>
-                                <option value="">Teacher</option>
-                                <option value="">Student</option>
+                                <?php 
+                                    foreach($roles as $role){
+                                        echo "<option value='" . $role['id'] . "'>" . $role['role_name'] . "</option>";
+                                    }
+                                    ?>
                             </select>
                         </div>
                         <div class="form_group">
