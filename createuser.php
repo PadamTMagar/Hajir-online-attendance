@@ -1,35 +1,3 @@
-<?php require_once('aetsconn.php');
-$error = '';
-$succes_msg = '';
-
-if(isset($_POST['submit'])){
-    $f_name = $_POST['firstname'];
-    $m_name = $_POST['midname'];
-    $l_name = $_POST['lastname'];
-    $email = $_POST['emailid'];
-    $number = $_POST['phone_number'];
-    $pic = $_POST['profile_pic'];
-    $class = $_POST['class_selection'];
-    $dob = $_POST['dob'];
-    $gender= $_POST['gender'];
-    $marital = $_POST['marital'];
-    $blood = $_POST['blood'];
-    $alter_contact = $_POST['alter_contact'];
-    $perm_address = $_POST['perm_address'];
-    $temp_address = $_POST['temp_address'];
-    $father_name = $_POST['father_name'];
-    $father_occupation = $_POST['father_occupation'];
-    $father_contact = $_POST['father_contact'];
-    $mother_name = $_POST['mother_name'];
-    $mother_contact = $_POST['mother_contact'];
-    $guardian_name = $_POST['guardian_name'];
-    $guardian_contact= $_POST['guardian_contact'];
-}
-
-
-$insert_data = "INSERT INTO userlist(firstname,midname, lastname, emailid, phone_number, profile_pic , class_selection , dob , gender, marital, blood , alter_contact, perm_address, temp_address , father_name, father_occupation , father_contact, mother_name , mother_contact , guardian_name , guardian_contact) 
-VALUES('$f_name' '$m_nam' '$l_name' '$email' '$number' '$pic' '$class' '$dob' '$gender' '$marital' '$blood' '$alter_contact' '$perm_address' '$temp_address' '$father_name' '$father_occupation' '$father_contact' '$mother_name' '$mother_contact' '$guardian_name ' '$guardian_contact')";
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +12,56 @@ VALUES('$f_name' '$m_nam' '$l_name' '$email' '$number' '$pic' '$class' '$dob' '$
 
 <?php require_once('aetsheader.php'); ?>
 <?php require_once('aetssidebar.php'); ?>  
+<?php require_once('aetsconn.php');
+$error = '';
+$succes_msg = '';
+
+if (isset($_POST['submit']) && isset($_FILES["profile_pic"])) {
+    $f_name = $_POST['firstname'];
+    $m_name = $_POST['midname'];
+    $l_name = $_POST['lastname'];
+    $email = $_POST['emailid'];
+    $number = $_POST['phone_number'];
+
+    $pic_name = $_FILES["profile_pic"]["name"];
+    $temp_name = $_FILES["profile_pic"]["tmp_name"];
+    $folder = "profilePic/". $pic_name;        
+            // echo $folder;
+    if (move_uploaded_file($temp_name, $folder)) {
+        echo "File uploaded successfully.";
+    } else {
+        echo "Error uploading file.";
+        }
+    $class = $_POST['class_selection'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+    $marital = $_POST['marital'];
+    $blood = $_POST['blood'];
+    $alter_contact = $_POST['alter_contact'];
+    $perm_address = $_POST['perm_address'];
+    $temp_address = $_POST['temp_address'];
+    $father_name = $_POST['father_name'];
+    $father_occupation = $_POST['father_occupation'];
+    $father_contact = $_POST['father_contact'];
+    $mother_name = $_POST['mother_name'];
+    $mother_contact = $_POST['mother_contact'];
+    $guardian_name = $_POST['guardian_name'];
+    $guardian_contact = $_POST['guardian_contact'];
+
+    $insert_data = "INSERT INTO userlist (firstname, midname, lastname, emailid, phone_number, profile_pic, class_selection, dob, gender, marital, blood, alter_contact, perm_address, temp_address, father_name, father_occupation, father_contact, mother_name, mother_contact, guardian_name, guardian_contact) 
+    VALUES('$f_name', '$m_name', '$l_name', '$email', '$number', '$pic_name', '$class', '$dob', '$gender', '$marital', '$blood', '$alter_contact', '$perm_address', '$temp_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_contact', '$guardian_name', '$guardian_contact')";
+
+    if (mysqli_query($conn, $insert_data)) {
+        $succes_msg = "New user added successfully";
+    } else {
+        $error = "Error: " . mysqli_error($conn);
+    }
+}
+else {
+    echo "No file uploaded.";
+}
+?>
+
 
 <div class="container">
     <div class="add_user">
@@ -51,7 +69,7 @@ VALUES('$f_name' '$m_nam' '$l_name' '$email' '$number' '$pic' '$class' '$dob' '$
             <span class="user">Add user</span>
         </div>
 
-        <form action="" name="adduser" method="POST">
+        <form action="" name="adduser" method="POST" enctype="multipart/form-data">
             <div class="user_details">
        
                 <div class="form_row">
@@ -174,8 +192,8 @@ VALUES('$f_name' '$m_nam' '$l_name' '$email' '$number' '$pic' '$class' '$dob' '$
                     </div>
 
                     <div class="form_group">
-                        <label for="per_address" id="perm_address">Permanent Address:</label>
-                        <input type="text" name="per_address" id="per_address" placeholder="Permanent Address" required>
+                        <label for="perm_address" id="perm_address">Permanent Address:</label>
+                        <input type="text" name="perm_address" id="perm_address" placeholder="Permanent Address" required>
                     </div>
 
                     <div class="form_group">
@@ -225,12 +243,16 @@ VALUES('$f_name' '$m_nam' '$l_name' '$email' '$number' '$pic' '$class' '$dob' '$
                     </div>
                 </div>
 
+                <div class="form-actions">
+                <button type="submit" name="submit">Create</button>
+                </div>
+
             </div>
         </form>    
     </div>
-    <div class="form-actions">
-                <button type="submit">Create</button>
-    </div>
+    
+    <div class="error_msg"><?php echo $error;?></div>
+    <div class="succes_msg"><?php echo $succes_msg;?></div>
 </div>
     
     
