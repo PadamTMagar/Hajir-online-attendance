@@ -9,8 +9,6 @@ $table = "CREATE TABLE userlist(
     emailid VARCHAR(50) NOT NULL UNIQUE,
     phone_number INT(10) NOT NULL,
     profile_pic VARCHAR(255) NOT NULL,
-    user VARCHAR(50) NOT NULL UNIQUE,  -- another database tabel
-    passwd VARCHAR(50) NOT NULL , -- another database table
     class_selection ENUM('class1' , 'class2') NOT NULL,
     dob DATE NOT NULL,
     gender ENUM('Male' , 'Female' , 'Other') NOT NULL,
