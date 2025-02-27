@@ -52,7 +52,7 @@
                                         <td><?php echo$row['class_size']; ?></td>
                                         <td class="action_row">
                                             <a href="viewuser.php" class="view_btn">View</a>
-                                            <a href="" class="edit_btn">Edit</a>
+                                            <a href="editclass.php" class="edit_btn">Edit</a>
                                             <a href="" class="delete_btn">Delete</a></td>
                                     </tr>
 
