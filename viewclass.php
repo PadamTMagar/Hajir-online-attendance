@@ -26,6 +26,45 @@
                         <button onclick="location.href='createclass.php';">Add</button>        
                     </div> 
             </div>
+            <table class="usertable">
+            <thread>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Class Teacher</th>
+                    <th>Class Size</th>
+                    <th>Action</th>
+                </tr>
+            </thread>
+            <tbody>
+                    <?php 
+                        $sql = "SELECT * FROM classroom";
+                        $result = mysqli_query($conn , $sql);
+                        if(mysqli_num_rows($result) > 0 ){
+                            foreach($result as $row)
+                            {
+                               
+                                ?>
+                                    <tr>
+                                        <td><?php echo$row['id']; ?></td>
+                                        <td><?php echo$row['classroom_name']; ?></td>
+                                        <td><?php echo$row['class_teacher']; ?></td>
+                                        <td><?php echo$row['class_size']; ?></td>
+                                        <td class="action_row">
+                                            <a href="viewuser.php" class="view_btn">View</a>
+                                            <a href="" class="edit_btn">Edit</a>
+                                            <a href="" class="delete_btn">Delete</a></td>
+                                    </tr>
+
+                                <?php
+                            }   
+                        }else
+                        {
+                            echo"No record found";
+                        }
+                    ?>
+            </tbody>
+        </table>
         </div>
         </div>
     </div>
