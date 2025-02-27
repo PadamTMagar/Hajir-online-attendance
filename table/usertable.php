@@ -17,7 +17,7 @@ $table = "CREATE TABLE userlist(
     alter_contact VARCHAR(20),
     perm_address VARCHAR(255) NOT NULL ,
     temp_address VARCHAR(255) NOT NULL ,
-    father_name VARCHAR(50) NOT NULL ,
+    father_name VARCHAR(50) NOT     NULL ,
     father_occupation VARCHAR(50) NOT NULL ,
     father_contact VARCHAR(20) NOT NULL ,
     mother_name VARCHAR(50) NOT NULL,

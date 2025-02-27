@@ -1,6 +1,10 @@
 <?php
 include("aetsheader.php");
 include("aetssidebar.php");
+include("aetsconn.php");
+?>
+<?php
+
 ?>
 
 <!DOCTYPE html>
@@ -24,31 +28,32 @@ include("aetssidebar.php");
             <div class="role_title">
                     <span>Class Details</span> 
             </div>
-            <div class="class_details">
-                <div class="form_row">
-                    <div class="form_group">
-                        <label for="class_name" id="class_name">Class Name:</label>
-                        <input type="text" name="class_name" id="class_name" placeholder="Class Name" required>
-                    </div>
+                        <form action="" method="post">
+                        <div class="class_details">
+                            <div class="form_row">
+                                <div class="form_group">
+                                    <label for="class_name" id="class_name">Class Name:</label>
+                                    <input type="text" name="class_name" id="class_name" placeholder="Class Name" required>
+                                </div>
 
-                    <div class="form_group">
-                        <label for="class_teacher" id="class_teacher">Class Teacher:</label>
-                        <select name="class_teacher" id="class_teacher">
-                            <option value="">Please Select</option>
-                            <option value="">hari</option>
-                            <option value="">shyam</option>
-                        </select>
-                    </div>
+                                <div class="form_group">
+                                    <label for="class_teacher" id="class_teacher">Class Teacher:</label>
+                                    <select name="class_teacher" id="class_teacher">
+                                        <option value="">Please Select</option>
+                                        <option value="">hari</option>
+                                        <option value="">shyam</option>
+                                    </select>
+                                </div>
 
-                    
-                    <div class="form_group">
-                        <label for="class_section" id="class_section">Section Name:</label>
-                        <input type="text" name="class_section" id="class_section" placeholder="Class Section" required>
-                    </div>
-                </div>
-
-                </div>
-            </div>
+                                
+                                <div class="form_group">
+                                    <label for="class_size" id="class_size">Size of classroom:</label>
+                                    <input type="text" name="class_size" id="class_size" placeholder="Size of classroom" required>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                        </div>
         </div>
 
         <div class="update_button">
