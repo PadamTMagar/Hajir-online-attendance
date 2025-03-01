@@ -18,11 +18,29 @@ include("aetssidebar.php");
                 <span class="markattendance">Mark Attendance</span>
         </div>
     </div>
+
     </div>
 
-        <div class="update_button">
-                    <button class="role_update">Add</button>
-                </div>
+        
     </div>
+</body>
+</html>
+
+<div class="class"> <!--rolepannel-->
+            <div class="class_header" >
+                <span class="classeslist">Classes</span>
+                <span class="class_mgs">Manage class</span>
+            </div>
+        <div class="class_content">
+            <div class="class_title">
+                    <span>All Classes</span>
+                    <div class="add">
+                        <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
+                        <button onclick="location.href='createclass.php';">Add</button>        
+                    </div> 
+            </div>
+        </div>
+        </div>
+</div>
 </body>
 </html>

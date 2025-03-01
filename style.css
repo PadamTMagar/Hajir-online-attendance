@@ -765,7 +765,7 @@ instead of using this i have use break tag <br> */
     all: unset;
 }
 
-.usertable , .roletable{
+.usertable , .roletable ,.teacher_table, .student_table{
     border-collapse: collapse;
     width: 100%;
 

@@ -7,6 +7,17 @@ include("aetsconn.php");
 $error = '';
 $succes_msg = '';
 
+$error = '';
+$succes_msg = '';
+
+$sql = "SELECT * FROM role_db";
+$result = mysqli_query($conn, $sql);
+$roles = [];
+while ($role = mysqli_fetch_assoc($result)) {
+    $roles[] = $role;
+}
+
+
 if(isset($_POST['submit'])){
     $classname = $_POST['class_name'];
     $classteacher = $_POST['class_teacher'];
@@ -64,8 +75,11 @@ if(isset($_POST['submit'])){
                                     <label for="class_teacher" id="class_teacher">Class Teacher:</label>
                                     <select name="class_teacher" id="class_teacher" >
                                         <option value="">Please Select</option>
-                                        <option value="hari">hari</option>
-                                        <option value="shyam">shyam</option>
+                                        <?php 
+                                        foreach($roles as $role) {
+                                            echo "<option value='" . $role['rolename'] . "'>" . $role['rolename'] . "</option>";
+                                        }
+                                    ?>
                                     </select>
                                 </div>
 
