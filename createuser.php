@@ -1,10 +1,90 @@
 
+<?php
+require_once('aetsconn.php');
+
+$error = '';
+$succes_msg = '';
+
+$sql = "SELECT * FROM role_db";
+$result = mysqli_query($conn, $sql);
+$roles = [];
+while ($role = mysqli_fetch_assoc($result)) {
+    $roles[] = $role;
+}
+
+$class_sql = "SELECT * FROM classroom";
+$class_result = mysqli_query($conn, $class_sql);
+$classrooms = [];
+while ($classroom = mysqli_fetch_assoc($class_result)) {
+    $classrooms[] = $classroom;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    $f_name = $_POST['firstname'];
+    $m_name = $_POST['midname'];
+    $l_name = $_POST['lastname'];
+    $email = $_POST['emailid'];
+    $number = $_POST['phone_number'];
+    $pic_name = $_FILES["profile_pic"]["name"];
+    $temp_name = $_FILES["profile_pic"]["tmp_name"];
+    $folder = "profilePic/" . $pic_name;
+
+    $passwd = $_POST['passwd'];
+    $confirm_pw = $_POST['confirm_pw'];
+
+    if (empty($f_name) || empty($l_name) || empty($email) || empty($number) || empty($pic_name)) {
+        $error = "All fields are required!";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email format!";
+    } elseif (!preg_match("/^[0-9]{10}$/", $number)) {
+        $error = "Invalid phone number format! It should be 10 digits.";
+    } elseif ($_FILES['profile_pic']['size'] > 1000000) {
+        $error = "File is too large! Maximum file size allowed is 1MB.";
+    } elseif (!in_array(pathinfo($pic_name, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png'])) {
+        $error = "Only JPG, JPEG, and PNG files are allowed for the profile picture.";
+    } elseif ($passwd !== $confirm_pw) {
+        $error = "Passwords do not match!";
+    } else {
+        if (move_uploaded_file($temp_name, $folder)) {
+            $succes_msg = "File uploaded successfully.";
+        } else {
+            $error = "Error uploading file.";
+        }
+
+        $class = $_POST['class_selection'];
+        $dob = $_POST['dob'];
+        $gender = $_POST['gender'];
+        $marital = $_POST['marital'];
+        $blood = $_POST['blood'];
+        $alter_contact = $_POST['alter_contact'];
+        $perm_address = $_POST['perm_address'];
+        $temp_address = $_POST['temp_address'];
+        $father_name = $_POST['father_name'];
+        $father_occupation = $_POST['father_occupation'];
+        $father_contact = $_POST['father_contact'];
+        $mother_name = $_POST['mother_name'];
+        $mother_contact = $_POST['mother_contact'];
+        $guardian_name = $_POST['guardian_name'];
+        $guardian_contact = $_POST['guardian_contact'];
+
+        $insert_data = "INSERT INTO userlist (firstname, midname, lastname, emailid, phone_number, profile_pic, class_selection, dob, gender, marital, blood, alter_contact, perm_address, temp_address, father_name, father_occupation, father_contact, mother_name, mother_contact, guardian_name, guardian_contact) 
+        VALUES('$f_name', '$m_name', '$l_name', '$email', '$number', '$pic_name', '$class', '$dob', '$gender', '$marital', '$blood', '$alter_contact', '$perm_address', '$temp_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_contact', '$guardian_name', '$guardian_contact')";
+
+        if (mysqli_query($conn, $insert_data)) {
+            $succes_msg = "New user added successfully";
+        } else {
+            $error = "Error: " . mysqli_error($conn);
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create</title>
+    <title>Create</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
@@ -12,63 +92,6 @@
 
 <?php require_once('aetsheader.php'); ?>
 <?php require_once('aetssidebar.php'); ?>  
-<?php require_once('aetsconn.php');
-$error = '';
-$succes_msg = '';
-
-if (isset($_POST['submit']) && isset($_FILES["profile_pic"])) {
-    $f_name = $_POST['firstname'];
-    $m_name = $_POST['midname'];
-    $l_name = $_POST['lastname'];
-    $email = $_POST['emailid'];
-    $number = $_POST['phone_number'];
-
-    $pic_name = $_FILES["profile_pic"]["name"];
-    $temp_name = $_FILES["profile_pic"]["tmp_name"];
-    $folder = "profilePic/". $pic_name;        
-            // echo $folder;
-    if (move_uploaded_file($temp_name, $folder)) {
-        $succes_msg= "File uploaded successfully.";
-    } else {
-        $error= "Error uploading file.";
-        }
-    $class = $_POST['class_selection'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $marital = $_POST['marital'];
-    $blood = $_POST['blood'];
-    $alter_contact = $_POST['alter_contact'];
-    $perm_address = $_POST['perm_address'];
-    $temp_address = $_POST['temp_address'];
-    $father_name = $_POST['father_name'];
-    $father_occupation = $_POST['father_occupation'];
-    $father_contact = $_POST['father_contact'];
-    $mother_name = $_POST['mother_name'];
-    $mother_contact = $_POST['mother_contact'];
-    $guardian_name = $_POST['guardian_name'];
-    $guardian_contact = $_POST['guardian_contact'];
-
-    $insert_data = "INSERT INTO userlist (firstname, midname, lastname, emailid, phone_number, profile_pic, class_selection, dob, gender, marital, blood, alter_contact, perm_address, temp_address, father_name, father_occupation, father_contact, mother_name, mother_contact, guardian_name, guardian_contact) 
-    VALUES('$f_name', '$m_name', '$l_name', '$email', '$number', '$pic_name', '$class', '$dob', '$gender', '$marital', '$blood', '$alter_contact', '$perm_address', '$temp_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_contact', '$guardian_name', '$guardian_contact')";
-
-    if (mysqli_query($conn, $insert_data)) {
-        $succes_msg = "New user added successfully";
-    } else {
-        $error = "Error: " . mysqli_error($conn);
-    }
-}
-else {
-    $error= "No file uploaded.";
-}
-                        $sql = "SELECT * FROM role_db";
-                        $result = mysqli_query($conn , $sql);
-                        $roles = [];
-                        while($role = mysqli_fetch_assoc($result)){
-                            $roles[] = $role;
-                        }
-
-?>
-
 
 <div class="container">
     <div class="add_user">
@@ -76,13 +99,19 @@ else {
             <span class="user">Add user</span>
         </div>
 
+        <?php if (!empty($error)): ?>
+            <div class="error_msg"><?php echo $error; ?></div>
+        <?php endif; ?>
+        <?php if (!empty($succes_msg)): ?>
+            <div class="succes_msg"><?php echo $succes_msg; ?></div>
+        <?php endif; ?>
+
         <form action="" name="adduser" method="POST" enctype="multipart/form-data">
             <div class="user_details">
-       
                 <div class="form_row">
                     <div class="form_group">
                         <label for="fname" id="fname">First Name:*</label>
-                        <input type="text" name="firstname" id="fistname" placeholder="First Name" required>
+                        <input type="text" name="firstname" id="firstname" placeholder="First Name" required>
                     </div>
 
                     <div class="form_group">
@@ -92,18 +121,16 @@ else {
 
                     <div class="form_group">
                         <label for="lname" id="lname">Last Name:*</label>
-                        <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+                        <input type="text" name="lastname" id="lastname" placeholder="Last Name" required>
                     </div>
                 </div>
-            
 
-            
                 <div class="form_row">
                     <div class="form_group">
                         <label for="email" id="email">Email:*</label>
                         <input type="email" name="emailid" id="emailid" placeholder="Email" required>
                     </div>
-                        
+
                     <div class="form_group">
                         <label for="phone_number" id="num">Phone Number:*</label>
                         <input type="tel" name="phone_number" id="phone_number" placeholder="+977 - 9*********" required>
@@ -115,12 +142,11 @@ else {
                     </div>
                 </div>
             </div>
-            
 
             <div class="role_permiss">
                 <h1>Role & Permissions</h1>
 
-                <div class="form_row">                    
+                <div class="form_row">
                     <div class="form_group">
                         <label for="username" id="username">Username:*</label>
                         <input type="text" name="user" id="user" placeholder="User Name" required>
@@ -135,29 +161,33 @@ else {
                         <label for="confirm_pw" id="confirm_pw">Confirm Password:*</label>
                         <input type="password" name="confirm_pw" id="confirm_pw" placeholder="Confirm Password" required>
                     </div>
+                </div>
+
+                <div class="form_row">
+                    <div class="form_group">
+                        <label for="role_selection" id="role_selection">Select Role:*</label>
+                        <select name="role_selection" id="roleselection" required>
+                            <option value="">Please Select</option>
+                            <?php 
+                                foreach($roles as $role) {
+                                    echo "<option value='" . $role['rolename'] . "'>" . $role['rolename'] . "</option>";
+                                }
+                            ?>
+                        </select>
                     </div>
 
-                    <div class="form_row">
-                        <div class="form_group">
-                            <label for="role_selection" id="role_selection">Select Role:*</label>
-                            <select name="role_selection" id="roleselection" required>
-                                <option value="">Please Select</option>
-                                <?php 
-                                    foreach($roles as $role){
-                                        echo "<option value='" . $role['id'] . "'>" . $role['role_name'] . "</option>";
-                                    }
-                                    ?>
-                            </select>
-                        </div>
-                        <div class="form_group">
-                            <label for="class_selection" id="class_selection">Select Class:*</label>
-                            <select name="class_selection" id="classselection" required>
-                                <option value="">Please Select</option>
-                                <option value="">class 1</option>
-                                <option value="">class 2</option>
-                            </select>
-                        </div>
-                    </div>   
+                    <div class="form_group">
+                        <label for="class_selection" id="class_selection">Select Class:*</label>
+                        <select name="class_selection" id="classselection" required>
+                            <option value="">Please Select</option>
+                            <?php 
+                                foreach($classrooms as $classroom) {
+                                    echo "<option value='" . $classroom['classroom_name'] . "'>" . $classroom['classroom_name'] . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="more_details">
@@ -170,23 +200,23 @@ else {
                     </div>
 
                     <div class="form_group">
-                            <label for="gender" id="gender">Gender:</label>
-                            <select name="gender" id="gender">
-                                <option value="">Please Select</option>
-                                <option value="">Male</option>
-                                <option value="">Female</option>
-                                <option value="">Other</option>
-                            </select>
+                        <label for="gender" id="gender">Gender:</label>
+                        <select name="gender" id="gender">
+                            <option value="">Please Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
 
                     <div class="form_group">
-                            <label for="marital" id="marital">Marital Status:</label>
-                            <select name="marital" id="marital">
-                                <option value="">Please Select</option>
-                                <option value="">Married</option>
-                                <option value="">Unmarried</option>
-                                <option value="">Divorced</option>
-                            </select>
+                        <label for="marital" id="marital">Marital Status:</label>
+                        <select name="marital" id="marital">
+                            <option value="">Please Select</option>
+                            <option value="Married">Married</option>
+                            <option value="Unmarried">Unmarried</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
                     </div>
 
                     <div class="form_group">
@@ -254,18 +284,11 @@ else {
                 </div>
 
                 <div class="form-actions">
-                <button type="submit" name="submit">Create</button>
+                    <button type="submit" name="submit">Create</button>
                 </div>
-
             </div>
-        </form>    
+        </form>
     </div>
-    
-    <div class="error_msg"><?php echo $error;?></div>
-    <div class="succes_msg"><?php echo $succes_msg;?></div>
-</div>
-    
-    
 </div>
 
 </body>

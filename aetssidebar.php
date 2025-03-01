@@ -48,19 +48,19 @@
                     <div class="menucontent">
                         <a href="createattendance.php">Mark Attendance</a>
                         <a href="#">View Attendance</a>
-                        <a href="#">Generate Qr</a>
+                        <!-- <a href="#">Generate Qr</a> -->
                     </div>
                 </div>
 
                 <!-- Notice-->
-                <div class="menu">
+                <!-- <div class="menu">
                     <input type="checkbox" id="Notice">
                     <label for="Notice" class="menubutton"><i class="fa-solid fa-newspaper"></i> Notice</label>
                     <div class="menucontent">
                         <a href="#">Add Notice</a>
                         <a href="#">View Notice</a>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Report-->
                 <div class="menu">

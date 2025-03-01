@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
                                 
                                 <div class="form_group">
                                     <label for="class_size" id="class_size">Size of classroom:</label>
-                                    <input type="text" name="class_size" id="class_size" placeholder="Size of classroom" >
+                                    <input type="number" name="class_size" id="class_size" placeholder="Size of classroom" >
                                 </div>
                             </div>
                             </div>
