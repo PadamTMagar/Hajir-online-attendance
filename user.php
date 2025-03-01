@@ -54,7 +54,7 @@
                                         <td><?php echo$row['user_role']; ?></td>
                                         <td class="action_row">
                                             <a href="viewuser.php" class="view_btn">View</a>
-                                            <a href="" class="edit_btn">Edit</a>
+                                            <a href='edituser.php?id=<?php echo $row['id']; ?>' class="edit_btn">Edit</a>
                                             <a href="" class="delete_btn">Delete</a></td>
                                     </tr>
 
