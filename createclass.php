@@ -7,8 +7,6 @@ include("aetsconn.php");
 $error = '';
 $succes_msg = '';
 
-$error = '';
-$succes_msg = '';
 
 $sql = "SELECT * FROM role_db";
 $result = mysqli_query($conn, $sql);
@@ -20,17 +18,17 @@ while ($role = mysqli_fetch_assoc($result)) {
 
 if(isset($_POST['submit'])){
     $classname = $_POST['class_name'];
-    $classteacher = $_POST['class_teacher'];
+    // $classteacher = $_POST['class_teacher'];
     $class_size = $_POST['class_size'];
 
-    if (empty($classname) || empty($classteacher) || empty($class_size)) {
+    if (empty($classname)  || empty($class_size)) {
         $error = "All fields are required!";
     } else {
         $verify_query = mysqli_query($conn , "SELECT classroom_name FROM classroom WHERE classroom_name='$classname'");
         if(mysqli_num_rows($verify_query) != 0) {
             $error = "This classroom is already created";
         } else {
-            $insert_data = "INSERT INTO classroom(classroom_name, class_teacher, class_size) VALUES ('$classname', '$classteacher', '$class_size')";
+            $insert_data = "INSERT INTO classroom(classroom_name,  class_size) VALUES ('$classname',  '$class_size')";
             if(mysqli_query($conn , $insert_data)) {
                 $succes_msg = "Classroom Created";
             } else {
@@ -70,20 +68,7 @@ if(isset($_POST['submit'])){
                                     <label for="class_name" id="class_name">Class Name:</label>
                                     <input type="text" name="class_name" id="class_name" placeholder="Class Name" >
                                 </div>
-
-                                <div class="form_group">
-                                    <label for="class_teacher" id="class_teacher">Class Teacher:</label>
-                                    <select name="class_teacher" id="class_teacher" >
-                                        <option value="">Please Select</option>
-                                        <?php 
-                                        foreach($roles as $role) {
-                                            echo "<option value='" . $role['rolename'] . "'>" . $role['rolename'] . "</option>";
-                                        }
-                                    ?>
-                                    </select>
-                                </div>
-
-                                
+   
                                 <div class="form_group">
                                     <label for="class_size" id="class_size">Size of classroom:</label>
                                     <input type="number" name="class_size" id="class_size" placeholder="Size of classroom" >

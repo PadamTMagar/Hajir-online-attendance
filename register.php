@@ -1,49 +1,50 @@
 <?php 
 include("aetsconn.php");
 $error = '';
-$succes_msg ='';
+$succes_msg = '';
 
 if(isset($_POST['submit'])){
-
     $User_name = $_POST['User_name'];
     $email = $_POST['email'];
     $passwd = $_POST['passwd']; 
     $confirm_password = $_POST['confirm_passwd'];
-    $user_role = 'admin';
+    $user_role = 'Admin';
+    $secret_code = 'ADMIN123';
 
     if (empty($User_name) || empty($email) || empty($passwd) || empty($confirm_password))  {
-        $error = "All field are required!";
+        $error = "All fields are required!";
     }
     elseif(!filter_var($email ,FILTER_VALIDATE_EMAIL)){
         $error = "Invalid Email!";
     }
     elseif($passwd !== $confirm_password){
-        $error = "The password didnt match!";
+        $error = "The password didn't match!";
     }
     else{
-
         $verify_query = mysqli_query($conn , "SELECT user FROM user_db WHERE user='$User_name'");
-
-    if(mysqli_num_rows($verify_query) !=0 ){
-        $error = "This username is already taken, Try another one.";
-    }
-    else{
-
-        $hashedpw = password_hash($passwd ,PASSWORD_BCRYPT);
-
-        $insert_data ="INSERT INTO user_db (user, email, passwd, user_role) VALUES('$User_name', '$email', '$hashedpw', '$user_role')"; 
-        if(mysqli_query($conn ,$insert_data)){
-            $succes_msg = "Registration Successfull!";
+        if(mysqli_num_rows($verify_query) != 0 ){
+            $error = "This username is already taken, Try another one.";
         }
         else{
-            $error = "Error: " .mysqli_error($conn);
-        }
+            $entered_code = $_POST['registration_code'];
+            if ($entered_code !== $secret_code) {
+                $error = "Invalid registration code!";
+            }
+            else{
+                $hashedpw = password_hash($passwd ,PASSWORD_BCRYPT);
+                $insert_data = "INSERT INTO user_db (user, email, passwd, user_role) VALUES('$User_name', '$email', '$hashedpw', '$user_role')"; 
+                
+                if(mysqli_query($conn, $insert_data)){
+                    $succes_msg = "Registration Successful!";
+                }
+                else{
+                    $error = "Error: " . mysqli_error($conn);
+                }
+            }
         }
     }
 }    
 ?> 
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,11 +89,15 @@ if(isset($_POST['submit'])){
                 <input type="password" name="confirm_passwd" id="confirm_passwd" placeholder="Confirm Password"> 
             </div> 
 
+            <div class="input_container">
+                <i class="fa-solid fa-key"></i>
+                <input type="text" name="registration_code" id="registration_code" placeholder="Enter Registration Code"> 
+            </div>
 
             <input type="Submit" id="btn" value="Register" name="submit">
 
-                <div class="error_msg"><?php echo $error;?></div>
-                <div class="succes_msg"><?php echo $succes_msg;?></div>
+            <div class="error_msg"><?php echo $error;?></div>
+            <div class="succes_msg"><?php echo $succes_msg;?></div>
 
         </form>
     </div>

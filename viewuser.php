@@ -1,21 +1,4 @@
-<?php
-require_once('aetsconn.php');
 
-if (isset($_GET['id'])) {
-    $user_id = intval($_GET['id']);
-} else {
-    die("User ID not provided.");
-}
-
-$sql = "SELECT * FROM userlist WHERE id = $user_id";
-$result = mysqli_query($conn, $sql);
-
-if ($result && mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
-} else {
-    die("User not found.");
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +12,25 @@ if ($result && mysqli_num_rows($result) > 0) {
 <body>
     <?php require_once('aetsheader.php'); ?>
     <?php require_once('aetssidebar.php'); ?>  
+    <?php
+require_once('aetsconn.php');
+
+if (isset($_GET['id'])) {
+    $user_id = intval($_GET['id']);
+} else {
+    die("User ID not provided.");
+}
+
+// Query the userlist table
+$sql = "SELECT * FROM userlist WHERE user_id = $user_id";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
+} else {
+    die("User not found.");
+}
+?>
 
     <div class="container">
         <div class="user_profile">
@@ -39,6 +41,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             <div class="user_portal">
                 <div class="user_info">
                     <div class="profile_pannel">
+                        <!-- Display the profile picture -->
                         <img src="profilePic/<?php echo $user['profile_pic']; ?>" alt="ProfilePic" class="profile_pic1">
                         <div class="user_name1">
                             <?php 
@@ -49,7 +52,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 echo ' ' . $user['lastname']; 
                             ?>
                         </div>
-                        <div class="role_of_user"><?php echo $user['role_selection']; ?></div>
+                        <!-- <div class="role_of_user"><?php echo $user['role_selection']; ?></div> -->
                     </div>
 
                     <div class="details_pannel">
@@ -82,7 +85,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                     <div class="more_info_header">
                         <div><i class="fa-solid fa-user"></i></div>
                         <div class="more_info_msg">User Information</div>
-                    </div>
+                    </div>  
 
                     <div class="more_info_data_column">
                         <div class="data_row_group">

@@ -28,10 +28,10 @@
         </nav>
                 <div class="drop_content" id="drop_menu">
                     <div class="profile_selection">
-                        <img src="assets/profilepic.jpg" alt="ProfilePic" class="profile_pic" >
-                        <div class="user_name">Padam Thapa Magar</div>
+                        <!-- <img src="assets/profilepic.jpg" alt="ProfilePic" class="profile_pic" > -->
+                        <!-- <div class="user_name">Padam Thapa Magar</div> -->
                     </div>
-                    <a href="#">Profile</a>
+                    <!-- <a href="#">Profile</a> -->
                     <a href="logout.php">Logout</a>
                 </div>
     

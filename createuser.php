@@ -1,4 +1,3 @@
-
 <?php
 require_once('aetsconn.php');
 
@@ -28,56 +27,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $pic_name = $_FILES["profile_pic"]["name"];
     $temp_name = $_FILES["profile_pic"]["tmp_name"];
     $folder = "profilePic/" . $pic_name;
-
+    $username = $_POST['username'];
     $passwd = $_POST['passwd'];
     $confirm_pw = $_POST['confirm_pw'];
+    $role_selection = $_POST['role_selection'];
+    $class_selection = $_POST['class_selection'];
 
-    if (empty($f_name) || empty($l_name) || empty($email) || empty($number) || empty($pic_name)) {
+    if (empty($username) || empty($email) || empty($passwd) || empty($confirm_pw) || empty($f_name) || empty($l_name) || empty($number) || empty($pic_name)) {
         $error = "All fields are required!";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format!";
     } elseif (!preg_match("/^[0-9]{10}$/", $number)) {
         $error = "Invalid phone number format! It should be 10 digits.";
-    } elseif ($_FILES['profile_pic']['size'] > 1000000) {
-        $error = "File is too large! Maximum file size allowed is 1MB.";
-    } elseif (!in_array(pathinfo($pic_name, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png'])) {
-        $error = "Only JPG, JPEG, and PNG files are allowed for the profile picture.";
     } elseif ($passwd !== $confirm_pw) {
         $error = "Passwords do not match!";
     } else {
-        if (move_uploaded_file($temp_name, $folder)) {
-            $succes_msg = "File uploaded successfully.";
+        $verify_query = mysqli_query($conn, "SELECT user FROM user_db WHERE user='$username'");
+        
+        if (mysqli_num_rows($verify_query) != 0) {
+            $error = "This username is already taken, Try another one.";
         } else {
-            $error = "Error uploading file.";
-        }
+            $hashed_password = password_hash($passwd, PASSWORD_DEFAULT);
+            
+            if (move_uploaded_file($temp_name, $folder)) {
+                $succes_msg = "File uploaded successfully.";
+            } else {
+                $error = "Error uploading file.";
+            }
 
-        $class = $_POST['class_selection'];
-        $dob = $_POST['dob'];
-        $gender = $_POST['gender'];
-        $marital = $_POST['marital'];
-        $blood = $_POST['blood'];
-        $alter_contact = $_POST['alter_contact'];
-        $perm_address = $_POST['perm_address'];
-        $temp_address = $_POST['temp_address'];
-        $father_name = $_POST['father_name'];
-        $father_occupation = $_POST['father_occupation'];
-        $father_contact = $_POST['father_contact'];
-        $mother_name = $_POST['mother_name'];
-        $mother_contact = $_POST['mother_contact'];
-        $guardian_name = $_POST['guardian_name'];
-        $guardian_contact = $_POST['guardian_contact'];
+            $insert_user = "INSERT INTO user_db (user, email, passwd, user_role) 
+                            VALUES ('$username', '$email', '$hashed_password', '$role_selection')";
+            
+            if (mysqli_query($conn, $insert_user)) {
+                $user_id = mysqli_insert_id($conn);
 
-        $insert_data = "INSERT INTO userlist (firstname, midname, lastname, emailid, phone_number, profile_pic, class_selection, dob, gender, marital, blood, alter_contact, perm_address, temp_address, father_name, father_occupation, father_contact, mother_name, mother_contact, guardian_name, guardian_contact) 
-        VALUES('$f_name', '$m_name', '$l_name', '$email', '$number', '$pic_name', '$class', '$dob', '$gender', '$marital', '$blood', '$alter_contact', '$perm_address', '$temp_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_contact', '$guardian_name', '$guardian_contact')";
+                $dob = $_POST['dob'];
+                $gender = $_POST['gender'];
+                $marital = $_POST['marital'];
+                $blood = $_POST['blood'];
+                $alter_contact = $_POST['alter_contact'];
+                $perm_address = $_POST['perm_address'];
+                $temp_address = $_POST['temp_address'];
+                $father_name = $_POST['father_name'];
+                $father_occupation = $_POST['father_occupation'];
+                $father_contact = $_POST['father_contact'];
+                $mother_name = $_POST['mother_name'];
+                $mother_contact = $_POST['mother_contact'];
+                $guardian_name = $_POST['guardian_name'];
+                $guardian_contact = $_POST['guardian_contact'];
 
-        if (mysqli_query($conn, $insert_data)) {
-            $succes_msg = "New user added successfully";
-        } else {
-            $error = "Error: " . mysqli_error($conn);
+                $insert_data = "INSERT INTO userlist (firstname, midname, lastname, emailid, phone_number, profile_pic, class_selection, dob, gender, marital, blood, alter_contact, perm_address, temp_address, father_name, father_occupation, father_contact, mother_name, mother_contact, guardian_name, guardian_contact, user_id) 
+                                VALUES ('$f_name', '$m_name', '$l_name', '$email', '$number', '$pic_name', '$class_selection', '$dob', '$gender', '$marital', '$blood', '$alter_contact', '$perm_address', '$temp_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_contact', '$guardian_name', '$guardian_contact', '$user_id')";
+
+                if (mysqli_query($conn, $insert_data)) {
+                    $succes_msg = "New user added successfully.";
+                    header("Location: user.php"); 
+                    exit();
+                } else {
+                    $error = "Error inserting data into userlist: " . mysqli_error($conn);
+                }
+            } else {
+                $error = "Error inserting data into user_db: " . mysqli_error($conn);
+            }
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 <div class="form_row">
                     <div class="form_group">
                         <label for="username" id="username">Username:*</label>
-                        <input type="text" name="user" id="user" placeholder="User Name" required>
+                        <input type="text" name="username" id="username" placeholder="User Name" required>
                     </div>
 
                     <div class="form_group">
@@ -221,7 +237,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
                     <div class="form_group">
                         <label for="blood" id="blood">Blood Group:</label>
-                        <input type="text" name="blood" id="blood" placeholder="Blood Group" required>
+                        <select name="blood" id="blood">
+                            <option value="">Please Select</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
                     </div>
                 </div>
 

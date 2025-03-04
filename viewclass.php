@@ -31,7 +31,6 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Class Teacher</th>
                     <th>Class Size</th>
                     <th>Action</th>
                 </tr>
@@ -48,7 +47,6 @@
                                     <tr>
                                         <td><?php echo$row['id']; ?></td>
                                         <td><?php echo$row['classroom_name']; ?></td>
-                                        <td><?php echo$row['class_teacher']; ?></td>
                                         <td><?php echo$row['class_size']; ?></td>
                                         <td class="action_row">
                                             <a href="viewuser.php" class="view_btn">View</a>

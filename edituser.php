@@ -2,13 +2,13 @@
 require_once('aetsconn.php');
 
 $error = '';
-$succes_msg = '';
+$success_msg = '';
 $user = [];
 
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
     if ($id > 0) {
-        $sql = "SELECT * FROM userlist WHERE id = $id";
+        $sql = "SELECT * FROM userlist WHERE user_id = $id";
         $result = mysqli_query($conn, $sql);
 
         if ($result && mysqli_num_rows($result) > 0) {
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         $folder = "profilePic/" . $pic_name;
 
         if (move_uploaded_file($temp_name, $folder)) {
-            $succes_msg = "File uploaded successfully.";
+            $success_msg = "File uploaded successfully.";
         } else {
             $error = "Error uploading file.";
         }
@@ -60,7 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         $pic_name = $user['profile_pic'];
     }
 
-    $update_data = "UPDATE userlist SET
+    // Update userlist table
+    $update_userlist = "UPDATE userlist SET
         firstname = '$f_name',
         midname = '$m_name',
         lastname = '$l_name',
@@ -82,10 +83,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         mother_contact = '$mother_contact',
         guardian_name = '$guardian_name',
         guardian_contact = '$guardian_contact'
-        WHERE id = $id";
+        WHERE user_id = $id";
 
-    if (mysqli_query($conn, $update_data)) {
-        header("Location: viewuser.php?id=$id");
+    // Update user_db table
+    $update_userdb = "UPDATE user_db SET
+        email = '$email',
+        user_role = '{$_POST['role_selection']}'
+        WHERE user_id = $id";
+
+    // Execute both updates
+    if (mysqli_query($conn, $update_userlist) && mysqli_query($conn, $update_userdb)) {
+        header("Location: user.php");
         exit();
     } else {
         $error = "Error: " . mysqli_error($conn);
@@ -106,7 +114,6 @@ while ($classroom = mysqli_fetch_assoc($class_result)) {
     $classrooms[] = $classroom;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,8 +137,8 @@ while ($classroom = mysqli_fetch_assoc($class_result)) {
         <?php if (!empty($error)): ?>
             <div class="error_msg"><?php echo $error; ?></div>
         <?php endif; ?>
-        <?php if (!empty($succes_msg)): ?>
-            <div class="succes_msg"><?php echo $succes_msg; ?></div>
+        <?php if (!empty($success_msg)): ?>
+            <div class="success_msg"><?php echo $success_msg; ?></div>
         <?php endif; ?>
 
         <?php if (!empty($user)): ?>
@@ -164,7 +171,7 @@ while ($classroom = mysqli_fetch_assoc($class_result)) {
 
                         <div class="form_group">
                             <label for="phone_number" id="num">Phone Number:*</label>
-                            <input type="tel" name="phone_number" id="phone_number" placeholder="+977 - 9*********" value="<?php echo $user['phone_number']; ?>" required>
+                            <input type="tel" name="phone_number" id="phone_number" placeholder="9*********" value="<?php echo $user['phone_number']; ?>" required>
                         </div>
 
                         <div class="form_group">
@@ -184,8 +191,8 @@ while ($classroom = mysqli_fetch_assoc($class_result)) {
                             <select name="role_selection" id="roleselection" required>
                                 <option value="">Please Select</option>
                                 <?php 
-                                    foreach($roles as $role) {
-                                        $selected = ($role['id'] == $user['role_selection']) ? 'selected' : '';
+                                    foreach ($roles as $role) {
+                                        $selected = ($role['rolename'] == $user['user_role']) ? 'selected' : '';
                                         echo "<option value='" . $role['rolename'] . "' $selected>" . $role['rolename'] . "</option>";
                                     }
                                 ?>

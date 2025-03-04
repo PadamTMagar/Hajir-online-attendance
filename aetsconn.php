@@ -11,3 +11,9 @@
     echo"Connection successfully";    
     
 ?>
+
+<!-- 
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.2.43' IDENTIFIED BY 'your_password';
+
+FLUSH PRIVILEGES; -->
