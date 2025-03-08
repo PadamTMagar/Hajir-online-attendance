@@ -1,0 +1,68 @@
+// Database Schema Definition
+
+Table role_db {
+  role_id int [not null]
+  rolename varchar(30) [not null, primary key]
+}
+
+Table user_db {
+  id int [not null, primary key]
+  user_id int [not null]
+  user varchar(30) [not null]
+  email varchar(30) [not null]
+  passwd varchar(255) [not null]
+  user_role varchar(30)
+  created_at timestamp [not null, default: `current_timestamp`]
+}
+
+Table classroom {
+  id int [not null, primary key]
+  classroom_name varchar(20) [not null, unique]
+  class_size int [not null]
+  created_time timestamp [not null, default: `current_timestamp`]
+}
+
+Table userlist {
+  id int [not null, primary key]
+  firstname varchar(50) [not null]
+  midname varchar(50)
+  lastname varchar(50) [not null]
+  emailid varchar(50) [not null]
+  phone_number int [not null]
+  profile_pic varchar(255) [not null]
+  class_selection varchar(30)
+  dob date [not null]
+  gender varchar(20)
+  marital varchar(30)
+  blood varchar(10) [not null]
+  alter_contact varchar(20)
+  perm_address varchar(255) [not null]
+  temp_address varchar(255) [not null]
+  father_name varchar(50) [not null]
+  father_occupation varchar(50) [not null]
+  father_contact varchar(20) [not null]
+  mother_name varchar(50) [not null]
+  mother_contact varchar(20) [not null]
+  guardian_name varchar(20)
+  guardian_contact varchar(20)
+  user_id int
+}
+
+Table attendance {
+  id int [not null, primary key]
+  user_id int
+  attendance_date date [not null]
+  status varchar(10) [not null]
+  classroom_name varchar(20) [not null]
+}
+
+// Relationships (Foreign Keys)
+Ref: user_db.user_role > role_db.rolename // Many-to-One
+
+Ref: userlist.class_selection > classroom.classroom_name // Many-to-One
+
+Ref: userlist.user_id > user_db.id // Many-to-One
+
+Ref: attendance.user_id > user_db.id // Many-to-One
+
+Ref: attendance.classroom_name > classroom.classroom_name // Many-to-One
