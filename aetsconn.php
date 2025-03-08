@@ -1,5 +1,5 @@
 <?php
-    $servername = "192.168.1.64";
+    $servername = "192.168.2.198";
     $username = "root";
     $password = "";
     $dbname = "hajir";  
@@ -8,12 +8,11 @@
     if ($conn->connect_error) {
         die("Connection failed". $conn->connect_error);
     }
-    echo"Connection successfully";    
+    // echo"Connection successfully";  s  
     
 ?>
 
 <!-- 
-
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.2.43' IDENTIFIED BY 'your_password';
 
 FLUSH PRIVILEGES; -->

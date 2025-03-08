@@ -1,10 +1,110 @@
 <?php
-$username = '';
+$user_name = '';
+$role_name = '';
 if(isset($_SESSION['user'])){
-    $username = $_SESSION['user'];
+    $user_name = $_SESSION['user'];
+    // $role_name = $_SESSION['user_role'];
 }
 
 ?>
+
+
+<?php
+// Assuming you have a connection to the database
+require_once 'aetsconn.php';
+
+// Initialize values
+$total_students = 0;
+$total_teachers = 0;
+$total_present = 0;
+$total_absent = 0;
+$total_classes = 0;
+
+// Fetch total students
+$result = $conn->query("SELECT COUNT(*) AS total_students FROM userlist ul INNER JOIN user_db u ON ul.user_id = u.id WHERE u.user_role = 'Student'");
+if ($result) {
+    $row = $result->fetch_assoc();
+    $total_students = $row['total_students'];
+}
+
+// Fetch total teachers
+$result = $conn->query("SELECT COUNT(*) AS total_teachers FROM userlist ul INNER JOIN user_db u ON ul.user_id = u.id WHERE u.user_role = 'Teacher'");
+if ($result) {
+    $row = $result->fetch_assoc();
+    $total_teachers = $row['total_teachers'];
+}
+
+// Fetch total present today
+$result = $conn->query("SELECT COUNT(*) AS total_present FROM attendance a INNER JOIN userlist ul ON a.user_id = ul.user_id WHERE a.attendance_date = CURDATE() AND a.status = 'Present'");
+if ($result) {
+    $row = $result->fetch_assoc();
+    $total_present = $row['total_present'];
+}
+
+// Fetch total absent today
+$result = $conn->query("SELECT COUNT(*) AS total_absent FROM attendance a INNER JOIN userlist ul ON a.user_id = ul.user_id WHERE a.attendance_date = CURDATE() AND a.status = 'Absent'");
+if ($result) {
+    $row = $result->fetch_assoc();
+    $total_absent = $row['total_absent'];
+}
+
+// Fetch total classes
+$result = $conn->query("SELECT COUNT(*) AS total_classes FROM classroom");
+if ($result) {
+    $row = $result->fetch_assoc();
+    $total_classes = $row['total_classes'];
+}
+?>
+
+
+
+<?php
+// Get the current year and month
+$currentYear = date('Y');
+$currentMonth = date('m');
+
+// Generate an array of all dates in the current month
+$startDate = new DateTime("{$currentYear}-{$currentMonth}-01");
+$endDate = new DateTime("{$currentYear}-{$currentMonth}-01");
+$endDate = $endDate->modify('last day of this month');
+
+// Create an array to hold all dates of the current month
+$line_dates = [];
+for ($date = $startDate; $date <= $endDate; $date->modify('+1 day')) {
+    $line_dates[] = $date->format('Y-m-d'); // Store the date in YYYY-MM-DD format
+}
+
+// SQL query to fetch attendance data for the current month
+$sql = "
+    SELECT DATE(attendance_date) as date, COUNT(*) as total_present 
+    FROM attendance 
+    WHERE MONTH(attendance_date) = $currentMonth AND YEAR(attendance_date) = $currentYear 
+    AND status = 'Present'
+    GROUP BY DATE(attendance_date)
+    ORDER BY DATE(attendance_date)";
+
+// Execute the query
+$result = $conn->query($sql);
+
+// Initialize an array for the attendance count, set all to zero initially
+$line_total_present = array_fill(0, count($line_dates), 0);
+
+// Fetch the results and update the attendance count for each day
+while ($row = $result->fetch_assoc()) {
+    $attendanceDate = $row['date'];
+    $presentCount = $row['total_present'];
+
+    // Find the index of the date and update the present count
+    $index = array_search($attendanceDate, $line_dates);
+    if ($index !== false) {
+        $line_total_present[$index] = $presentCount;
+    }
+}
+?>
+
+
+
+
 
 
 <html>
@@ -14,7 +114,10 @@ if(isset($_SESSION['user'])){
 </head>
     <div class="dashcontent">
     <div class="greeting">
-        <span>Hi,  <?php echo $username;?>  </span>
+                <span>Hi,  <?php echo $user_name; ?> 
+                <!-- <?php if (!empty($role_name)) { echo " - " . $role_name; } ?> -->
+                        </span>
+
         <div class="greet">
             <div class="greetele" id="greet"></div>
             <div class="msg" id="msg"></div>
@@ -22,49 +125,45 @@ if(isset($_SESSION['user'])){
     </div>
     <div class="dashboard">
 
-        <div class="total  student">
-            <div class="icon"><i class="fa-duotone fa-solid fa-users"></i></div>
-            <div class="content">
-                <div class="title">Total Student</div>
-                <div class="value">0</div>
+            <div class="total student">
+                <div class="icon"><i class="fa-duotone fa-solid fa-users"></i></div>
+                <div class="content">
+                    <div class="title">Total Student</div>
+                    <div class="value"><?php echo $total_students; ?></div>
+                </div>
             </div>
-        </div>
 
-
-        <div class="total  teacher">
-            <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-            <div class="content">
-                <div class="title">Total Teacher</div>
-                <div class="value">0</div>
+            <div class="total teacher">
+                <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <div class="content">
+                    <div class="title">Total Teacher</div>
+                    <div class="value"><?php echo $total_teachers; ?></div>
+                </div>
             </div>
-        </div>
 
-
-        <div class="total  present">
-            <div class="icon"><i class="fa-solid fa-hand-fist"></i></div>
-            <div class="content">
-                <div class="title">Present</div>
-                <div class="value">0</div>    
+            <div class="total present">
+                <div class="icon"><i class="fa-solid fa-hand-fist"></i></div>
+                <div class="content">
+                    <div class="title">Present</div>
+                    <div class="value"><?php echo $total_present; ?></div>
+                </div>
             </div>
-        </div>
 
-
-        <div class="total  absent">
-            <div class="icon"><i class="fa-solid fa-user-slash"></i></div>
-            <div class="content">
-                <div class="title">Absent</div>
-                <div class="value">0</div>
+            <div class="total absent">
+                <div class="icon"><i class="fa-solid fa-user-slash"></i></div>
+                <div class="content">
+                    <div class="title">Absent</div>
+                    <div class="value"><?php echo $total_absent; ?></div>
+                </div>
             </div>
-        </div>
 
-
-        <div class="total class">
-            <div class="icon"><i class="fa-solid fa-people-roof"></i> </div>
-            <div class="content">
-                <div class="title">Classes</div>
-                <div class="value">0</div>
+            <div class="total class">
+                <div class="icon"><i class="fa-solid fa-people-roof"></i></div>
+                <div class="content">
+                    <div class="title">Classes</div>
+                    <div class="value"><?php echo $total_classes; ?></div>
+                </div>
             </div>
-        </div>
     </div>
 </div>
 
@@ -83,8 +182,8 @@ if(isset($_SESSION['user'])){
             
             <div class="details">
                 <ul>
-                    <li>Total Present <span class="present" id="totalpresent">110</span></li>
-                    <li>Total Absent <span class="absent" id="totalabsent">80</span></li>
+                    <li class="hidden">Total Present <span class="present" id="totalpresent"><?php echo $total_present; ?></span></li>
+                    <li class="hidden">Total Absent <span class="absent" id="totalabsent"><?php echo $total_absent; ?></span></li>
                 </ul>
             </div>
         </div>
@@ -181,40 +280,19 @@ if(isset($_SESSION['user'])){
 
 <!-- line graph script -->
 <script>
-    function currentMonth() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = now.getMonth();
-        const startDate = new Date(year, month, 1);
-        const lastDate = new Date(year, month + 1, 0);
-        return { startDate, lastDate };
-    }
+    // Pass the PHP arrays to JavaScript
+    const line_dates = <?php echo json_encode($line_dates); ?>;
+    const line_total_present = <?php echo json_encode($line_total_present); ?>;
 
-    function dateRange(startDate, lastDate) {
-        const dates = [];
-        let currentDate = new Date(startDate);
-        while (currentDate <= lastDate) {
-            dates.push(currentDate.toISOString().split('T')[0]);
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-        return dates;
-    }
-
-    function generateRandomData(length) {
-        return Array.from({ length }, () => Math.floor(Math.random() * 100) + 1);
-    }
-
+    // Render the Line Chart with the fetched data
     function renderLineChart() {
-        const { startDate, lastDate } = currentMonth();
-        const dates = dateRange(startDate, lastDate);
-        const dataPoints = generateRandomData(dates.length);
-
         new Chart(document.getElementById("linegraph").getContext('2d'), {
             type: "line",
             data: {
-                labels: dates,
+                labels: line_dates, // Use the fetched dates as labels
                 datasets: [{
-                    data: dataPoints,
+                    label: 'Present Attendance', // Line label
+                    data: line_total_present, // Use the fetched attendance data as data points
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderWidth: 2,
@@ -224,23 +302,33 @@ if(isset($_SESSION['user'])){
             options: {
                 scales: {
                     x: {
-                        grid: { display: false }      
+                        grid: { display: false },
+                        title: { display: true, text: 'Date' }
                     },
                     y: {
                         grid: { display: true },
                         ticks: { display: true },
+                        title: { display: true, text: 'Attendance Count' }
                     }
                 },
                 plugins: {
-                    legend: { 
-                        display: false,        
+                    legend: {
+                        display: true,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Attendance'
                     }
                 }
             }
         });
     }
+
+    // Call the function to render the chart
     renderLineChart();
 </script>
+
+
 
 </html>
 

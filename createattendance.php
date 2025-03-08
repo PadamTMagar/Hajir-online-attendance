@@ -10,6 +10,10 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
+// Set the correct timezone (change to your preferred timezone if needed)
+date_default_timezone_set('Asia/Kathmandu');  // Example for Nepal Time (NPT)
+
+// Fetch classrooms
 $class_sql = "SELECT * FROM classroom";
 $class_result = mysqli_query($conn, $class_sql);
 $classrooms = [];
@@ -20,44 +24,62 @@ while ($classroom = mysqli_fetch_assoc($class_result)) {
 $student_result = null;
 $selected_class = null;
 
+$succes_msg = '';
+$error = '';
+
+// Fetch students for the selected class
 if (isset($_POST['class_selection'])) {
     $selected_class = $_POST['class_selection'];
 
-    $student_sql = "SELECT * FROM userlist WHERE class_selection = '$selected_class' 
-                    AND id IN (SELECT id FROM user_db WHERE user_role = 3)";
+    $student_sql = "SELECT userlist.* FROM userlist
+                    JOIN user_db ON userlist.user_id = user_db.id
+                    WHERE userlist.class_selection = '$selected_class' 
+                    AND user_db.user_role = 'Student'";
+
     $student_result = mysqli_query($conn, $student_sql);
 
     if (!$student_result) {
-        echo "<br>Error fetching students: " . mysqli_error($conn);
+        $error = "Error fetching students: " . mysqli_error($conn);
     }
 }
 
+// Save attendance
 if (isset($_POST['save_attendance'])) {
     if (isset($_POST['attendance'])) {
         $attendance = $_POST['attendance']; 
-        $current_date = date('Y-m-d');
+        $current_date = date('Y-m-d'); // Get the current date in Y-m-d format
+        $classroom_name = $_POST['class_selection'];
 
-        foreach ($attendance as $user_id) {
+        foreach ($attendance as $user_id => $status) {
+            // Check if the student has already been marked today
+            $check_sql = "SELECT * FROM attendance WHERE user_id = '$user_id' AND DATE(attendance_date) = CURDATE()";
+            $check_result = mysqli_query($conn, $check_sql);
 
-            $attendance_sql = "INSERT INTO attendance (date) VALUES ('$current_date')";
-
-            if (mysqli_query($conn, $attendance_sql)) {
-
-                $attendance_id = mysqli_insert_id($conn);
-
-                $update_sql = "UPDATE userlist SET atten_id = '$attendance_id' WHERE user_id = '$user_id'";
+            if (mysqli_num_rows($check_result) > 0) {
+                // If attendance is already marked, update the status instead of inserting
+                $update_sql = "UPDATE attendance 
+                               SET status = '$status', classroom_name = '$classroom_name'
+                               WHERE user_id = '$user_id' AND DATE(attendance_date) = CURDATE()";
 
                 if (mysqli_query($conn, $update_sql)) {
-                    echo "<br>Attendance saved  ";
+                    $succes_msg = "Attendance updated";
                 } else {
-                    echo "<br>Error updating userlist: " . mysqli_error($conn);
+                    $error = "Error updating attendance: " . mysqli_error($conn);
                 }
             } else {
-                echo "<br>Error saving attendance: " . mysqli_error($conn);
+                // Insert the attendance if not already marked
+                $attendance_sql = "INSERT INTO attendance (user_id, attendance_date, status, classroom_name) 
+                                   VALUES ('$user_id', '$current_date', '$status', '$classroom_name')";
+
+                if (mysqli_query($conn, $attendance_sql)) {
+                    $succes_msg = "Attendance saved for user ID: " . $user_id;
+                } else {
+                    $error = "Error saving attendance: " . mysqli_error($conn);
+                }
             }
         }
     } else {
-        echo "<br>No students selected for attendance.";
+        $error = "No students selected for attendance.";
     }
 }
 ?>
@@ -84,7 +106,9 @@ if (isset($_POST['save_attendance'])) {
             <div class="teacher_title">
                 <span>Mark Attendance</span>
             </div>
-
+            <div class="select_class">
+                Hello
+            </div>
             <form method="POST">
                 <label for="class_selection">Select Class:*</label>
                 <select name="class_selection" id="classselection" required onchange="this.form.submit()">
@@ -106,17 +130,40 @@ if (isset($_POST['save_attendance'])) {
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Mark Attendance</th>
+                                <th>Attendance Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                             if (mysqli_num_rows($student_result) > 0) {
                                 while ($student = mysqli_fetch_assoc($student_result)) {
+                                    $user_id = $student['user_id'];
+
+                                    // Check if attendance has already been marked today
+                                    $attendance_check_sql = "SELECT * FROM attendance WHERE user_id = '$user_id' AND DATE(attendance_date) = CURDATE()";
+                                    $attendance_check_result = mysqli_query($conn, $attendance_check_sql);
+                                    $status = (mysqli_num_rows($attendance_check_result) > 0) ? mysqli_fetch_assoc($attendance_check_result)['status'] : '';
+
                                     echo "<tr>";
                                     echo "<td>" . $student['user_id'] . "</td>";
                                     echo "<td>" . $student['firstname'] . " " . $student['lastname'] . "</td>";
-                                    echo "<td><input type='checkbox' name='attendance[]' value='" . $student['user_id'] . "'></td>";
+                                    echo "<td>";
+
+                                    // Present radio button
+                                    echo "<input type='radio' name='attendance[" . $user_id . "]' value='Present' ";
+                                    if ($status === "Present") {
+                                        echo "checked";
+                                    }
+                                    echo "> Present ";
+
+                                    // Absent radio button
+                                    echo "<input type='radio' name='attendance[" . $user_id . "]' value='Absent' ";
+                                    if ($status === "Absent") {
+                                        echo "checked";
+                                    }
+                                    echo "> Absent";
+
+                                    echo "</td>";
                                     echo "</tr>";
                                 }
                             } else {
@@ -125,9 +172,14 @@ if (isset($_POST['save_attendance'])) {
                             ?>
                         </tbody>
                     </table>
-                    <button type="submit" name="save_attendance" class="save_button">Save Attendance</button>
+                    <div class="update_button">
+                        <button class="role_update" type="submit" name="save_attendance" class="save_button">Save Attendance</button>
+                    </div>
                 </form>
             <?php endif; ?>
+
+            <div class="error_msg"><?php echo $error;?></div>
+            <div class="succes_msg"><?php echo $succes_msg;?></div>
         </div>
     </div>
 </div>

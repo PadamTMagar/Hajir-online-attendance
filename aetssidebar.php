@@ -47,7 +47,7 @@
                     <label for="Attendance" class="menubutton"><i class="fa-regular fa-address-book"></i> Attendance</label>
                     <div class="menucontent">
                         <a href="createattendance.php">Mark Attendance</a>
-                        <a href="#">View Attendance</a>
+                        <a href="viewattendance.php">View Attendance</a>
                         <!-- <a href="#">Generate Qr</a> -->
                     </div>
                 </div>

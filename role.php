@@ -1,7 +1,4 @@
-<?php
-require_once('aetsconn.php');
 
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +12,7 @@ require_once('aetsconn.php');
 <body>
     <?php require_once('aetsheader.php'); ?>
     <?php require_once('aetssidebar.php'); ?>  
+    <?php require_once('aetsconn.php');?>
     <div class="container">
         <div class="rollpannel">
             <div class="role_header">

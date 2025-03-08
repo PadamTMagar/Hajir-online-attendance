@@ -1390,3 +1390,8 @@ header .calandar-navbar span{
 
 
 
+/* Create attendance form css  */
+.select_class {
+    color: red;
+    margin: 20  ;
+}
