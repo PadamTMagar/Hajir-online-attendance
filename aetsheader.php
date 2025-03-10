@@ -17,10 +17,10 @@
                     <li><a href="report.php"><i class="fa-regular fa-clipboard"></i></a></li>
                 </div>
 
-                <div class="navlist">
+                <!-- <div class="navlist">
                     <span id="hovertext">Notice</span>
                     <li><a href="#" id="notice" onclick="display()"><i class="fa-solid fa-bell fa-shake"></i></a></li>
-                </div>
+                </div> -->
                 
                 <div id="date"></div>
                 <div class="login" onclick="toggle('drop_menu')"><button class="drop_button">Logout</button></div>

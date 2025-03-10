@@ -5,16 +5,19 @@ include("aetsconn.php");
 
 $error = '';
 $succes_msg = '';
+$update_query = ''; // Initialize to avoid undefined variable issue
 
 $id = $_GET['id'] ?? '';
+$classname = '';
+$class_size = '';
+
 if (!empty($id)) {
-    $query = "SELECT * FROM Classroom WHERE id = '$id'";
+    $query = "SELECT * FROM classroom WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        $classname = $row['class_name'];
-        $classteacher = $row['class_teacher'];
+        $classname = $row['classroom_name']; // Fixed incorrect column name
         $class_size = $row['class_size'];
     } else {
         $error = "Classroom not found!";
@@ -22,14 +25,13 @@ if (!empty($id)) {
 }
 
 if (isset($_POST['submit'])) {
-    $classname = mysqli_real_escape_string($conn, $_POST['class_name']);
-    $classteacher = mysqli_real_escape_string($conn, $_POST['class_teacher']);
-    $class_size = mysqli_real_escape_string($conn, $_POST['class_size']);
+    $classname = $_POST['class_name'];
+    $class_size = $_POST['class_size'];
 
-    if (empty($classname) || empty($classteacher) || empty($class_size)) {
+    if (empty($classname) || empty($class_size)) {
         $error = "All fields are required!";
     } else {
-        $update_query = "UPDATE classroom SET classroom_name='$classname', class_teacher='$classteacher', class_size='$class_size' WHERE id='$id'";
+        $update_query = "UPDATE classroom SET classroom_name='$classname', class_size='$class_size' WHERE id='$id'";
 
         if (mysqli_query($conn, $update_query)) {
             $succes_msg = "Classroom updated successfully!";
@@ -38,8 +40,6 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -68,21 +68,12 @@ if (isset($_POST['submit'])) {
                         <div class="form_row">
                             <div class="form_group">
                                 <label for="class_name">Class Name:</label>
-                                <input type="text" name="class_name" id="class_name" value="<?php echo isset($classname) ? $classname : ''; ?>">
-                            </div>
-
-                            <div class="form_group">
-                                <label for="class_teacher">Class Teacher:</label>
-                                <select name="class_teacher" id="class_teacher">
-                                    <option value="">Please Select</option>
-                                    <option value="hari" <?php echo (isset($classteacher) && $classteacher == 'hari') ? 'selected' : ''; ?>>hari</option>
-                                    <option value="shyam" <?php echo (isset($classteacher) && $classteacher == 'shyam') ? 'selected' : ''; ?>>shyam</option>
-                                </select>
+                                <input type="text" name="class_name" id="class_name" value="<?php echo $classname; ?>">
                             </div>
 
                             <div class="form_group">
                                 <label for="class_size">Size of classroom:</label>
-                                <input type="number" name="class_size" id="class_size" value="<?php echo isset($class_size) ? $class_size : ''; ?>">
+                                <input type="number" name="class_size" id="class_size" value="<?php echo $class_size; ?>">
                             </div>
                         </div>
                     </div>
@@ -93,7 +84,6 @@ if (isset($_POST['submit'])) {
 
                 <div class="error_msg"><?php echo $error;?></div>
                 <div class="succes_msg"><?php echo $succes_msg;?></div>
-                <div ><?php echo $update_query;?></div>
             </div>
         </div>
     </div>

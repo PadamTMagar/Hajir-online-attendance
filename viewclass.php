@@ -49,9 +49,12 @@
                                         <td><?php echo$row['classroom_name']; ?></td>
                                         <td><?php echo$row['class_size']; ?></td>
                                         <td class="action_row">
-                                            <a href="viewuser.php" class="view_btn">View</a>
+                                            <!-- <a href="viewuser.php" class="view_btn">View</a> -->
                                             <a href="editclass.php?id=<?php echo $row['id']; ?>" class="edit_btn">Edit</a>
-                                            <a href="" class="delete_btn">Delete</a></td>
+                                            <a href="deleteclass.php?id=<?php echo $row['id']; ?>" class="delete_btn">Delete</a>
+
+                                        </td>
+
                                     </tr>
 
                                 <?php

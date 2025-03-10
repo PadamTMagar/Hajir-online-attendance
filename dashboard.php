@@ -1,11 +1,21 @@
 <?php
+require_once 'aetsconn.php';
+
 $user_name = '';
-$role_name = '';
-if(isset($_SESSION['user'])){
+
+if (isset($_SESSION['user'])) {
     $user_name = $_SESSION['user'];
-    // $role_name = $_SESSION['user_role'];
 }
 
+$sql = "SELECT u.user_role FROM user_db u WHERE u.user = '$user_name'";
+
+$result = $conn->query($sql);
+
+if ($result && $row = $result->fetch_assoc()) {
+    $role_name = $row['user_role'];
+} else {
+    $role_name = 'Unknown';
+}
 ?>
 
 
@@ -108,15 +118,16 @@ while ($row = $result->fetch_assoc()) {
 
 
 <html>
-    <head>
+    <head> 
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0/chart.js" integrity="sha512-heziW2w3+/erezjMdHOyvg67lCz19RzOQRy118vTH9+DU6GS56G2FdQJDrGlXuCKGpH+yPdWZajxK+IoqvjYjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
 </head>
     <div class="dashcontent">
     <div class="greeting">
-                <span>Hi,  <?php echo $user_name; ?> 
-                <!-- <?php if (!empty($role_name)) { echo " - " . $role_name; } ?> -->
-                        </span>
+                    <span>Hi, <?php echo $user_name; ?> 
+                    -<?php echo $role_name; ?>
+                    </span>
 
         <div class="greet">
             <div class="greetele" id="greet"></div>
@@ -327,8 +338,6 @@ while ($row = $result->fetch_assoc()) {
     // Call the function to render the chart
     renderLineChart();
 </script>
-
-
 
 </html>
 
