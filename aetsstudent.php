@@ -15,7 +15,7 @@
                     <input type="checkbox" id="UserMng">
                     <label for="UserMng" class="menubutton"><i class="fa-solid fa-user-gear"></i> User Management   </label>
                     <div class="menucontent">
-                        <a href="role.php">Role</a>
+                        <!-- <a href="role.php">Role</a> -->
                         <a href="user.php">User</a>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <input type="checkbox" id="class">
                     <label for="class" class="menubutton"><i class="fa-solid fa-people-roof"></i> Classroom</label>
                     <div class="menucontent">
-                        <a href="createclass.php">Add Classroom</a>
+                        <!-- <a href="createclass.php">Add Classroom</a> -->
                         <a href="viewclass.php">View Classroom</a>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                     <input type="checkbox" id="Attendance">
                     <label for="Attendance" class="menubutton"><i class="fa-regular fa-address-book"></i> Attendance</label>
                     <div class="menucontent">
-                        <a href="createattendance.php">Mark Attendance</a>
+                        <!-- <a href="createattendance.php">Mark Attendance</a> -->
                         <a href="viewattendance.php">View Attendance</a>
                         <!-- <a href="#">Generate Qr</a> -->
                     </div>

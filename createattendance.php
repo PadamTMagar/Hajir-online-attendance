@@ -107,7 +107,6 @@ if (isset($_POST['save_attendance'])) {
                 <span>Mark Attendance</span>
             </div>
             <div class="select_class">
-                Hello
             </div>
             <form method="POST">
                 <label for="class_selection">Select Class:*</label>

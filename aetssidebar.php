@@ -67,7 +67,7 @@
                     <input type="checkbox" id="report">
                     <label for="report" class="menubutton"><i class="fa-solid fa-database"></i> Report</label>
                     <div class="menucontent">
-                        <a href="#">Total Present</a>
+                        <a href="totalreport.php">Total Present</a>
                         <a href="#">Total Absent</a>
                         <a href="#">Total Absent</a>
                         <a href="#">Total Absent</a>

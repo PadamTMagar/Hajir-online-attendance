@@ -1,9 +1,8 @@
 <?php
-// Assume connection to DB is established
-include('db_connection.php'); // Ensure you have a file to handle DB connection
+include('aetsconn.php'); // Ensure you have a file to handle DB connection
 
-// Get the user_id from the URL
-$user_id = $_GET['id'];
+// Get the user_id from the URL (example: viewclass.php?id=123)
+$user_id = $_GET['id']; // Fetch the user_id from URL
 
 // Fetch attendance data for the user (Present or Absent)
 $query = "SELECT attendance_date, status FROM attendance WHERE user_id = $user_id";
@@ -11,16 +10,18 @@ $result = mysqli_query($conn, $query);
 
 $attendance = [];
 while ($row = mysqli_fetch_assoc($result)) {
+    // Ensure the format of the date is YYYY-MM-DD
     $attendance[$row['attendance_date']] = $row['status'];
 }
-?>
 
+// Pass the attendance data to JavaScript
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
+    <title>Attendance Calendar</title>
     <style>
         /* Your existing CSS for the calendar */
         body {
@@ -28,6 +29,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
         .calendarbox {
             background-color: #fff;
@@ -38,7 +40,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         .calendarbox header {
             display: flex;
             align-items: center;
-            padding: 25px 30px 10px; /* up,left, down padding */
+            padding: 25px 30px 10px;
             justify-content: space-between;
         }
         header .calandar-current-date {
@@ -83,10 +85,6 @@ while ($row = mysqli_fetch_assoc($result)) {
         .calander-body .days li {
             cursor: default;
             font-weight: 600;
-        }
-        .calander-body .dates {
-            margin-bottom: 20px;
-            overflow: visible;
         }
         .calander-body .dates li {
             margin-top: 30px;
@@ -193,9 +191,11 @@ while ($row = mysqli_fetch_assoc($result)) {
                         ? "active"
                         : "";
 
+                // Format the current date as YYYY-MM-DD with leading zeros
+                let currentDateStr = `${year}-${(month + 1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
+
                 // Check if attendance is marked for the current day
                 let statusClass = "";
-                let currentDateStr = `${year}-${month + 1}-${i}`;
                 if (attendance[currentDateStr] === 'Present') {
                     statusClass = "present";
                 } else if (attendance[currentDateStr] === 'Absent') {
@@ -216,6 +216,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         renderCalendar();
 
+        // Handling the month navigation
         arrowIcons.forEach((icon) => {
             icon.addEventListener("click", () => {
                 month = icon.id === "calander-prev" ? month - 1 : month + 1;
