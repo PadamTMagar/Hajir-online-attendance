@@ -2,6 +2,12 @@
 session_start();
 require_once('aetsconn.php');
 
+if (!isset($_SESSION['user'])) {
+    // If not logged in, redirect to login page
+    header('Location: login.php');
+    exit;
+}
+
 $user_name = $_SESSION['user'] ?? '';
 
 $sql = "SELECT u.user_role FROM user_db u WHERE u.user = '$user_name'";

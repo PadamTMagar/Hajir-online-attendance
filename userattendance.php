@@ -1,3 +1,5 @@
+<?php session_start()?>
+
 <?php
 include('aetsconn.php'); // Ensure you have a file to handle DB connection
 

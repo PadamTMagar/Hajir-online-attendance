@@ -23,10 +23,10 @@
     <div class="user_content">
         <div class="user_title">
                 <span>All Users</span>
-                <div class="add">
+                <!-- <div class="add">
                     <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
                     <button onclick="location.href='createuser.php';">Add</button>        
-                </div> 
+                </div>  -->
         </div>
             
         <table class="usertable">
@@ -55,8 +55,8 @@
                                         <td><?php echo$row['user_role']; ?></td>
                                         <td class="action_row">
                                             <a href="viewuser.php?id=<?php echo $row['id']; ?>" class="view_btn">View</a>
-                                            <a href='edituser.php?id=<?php echo $row['id']; ?>' class="edit_btn">Edit</a>
-                                            <a href="delete.php?id=<?php echo $row['id']; ?>" class="delete_btn" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                            <!-- <a href='edituser.php?id=<?php echo $row['id']; ?>' class="edit_btn">Edit</a> -->
+                                            <!-- <a href="delete.php?id=<?php echo $row['id']; ?>" class="delete_btn" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a> -->
                                         </td>
                                     </tr>
 

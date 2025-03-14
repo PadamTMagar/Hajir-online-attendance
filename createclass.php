@@ -1,3 +1,5 @@
+<?php session_start()?>
+
 <?php
 include("aetsheader.php");
 include("aetssidebar.php");

@@ -1,3 +1,5 @@
+
+
 <div class="wrapper">  
         <div class="logo">
             <a href="index.php"><img src="assets/Hajir.png" alt="logo"></a>
@@ -46,7 +48,7 @@
                     <input type="checkbox" id="Attendance">
                     <label for="Attendance" class="menubutton"><i class="fa-regular fa-address-book"></i> Attendance</label>
                     <div class="menucontent">
-                        <a href="createattendance.php">Mark Attendance</a>
+                        <!-- <a href="createattendance.php">Mark Attendance</a> -->
                         <a href="viewattendance.php">View Attendance</a>
                         <!-- <a href="#">Generate Qr</a> -->
                     </div>
@@ -67,12 +69,12 @@
                     <input type="checkbox" id="report">
                     <label for="report" class="menubutton"><i class="fa-solid fa-database"></i> Report</label>
                     <div class="menucontent">
-                        <a href="#">Total Present</a>
-                        <a href="#">Total Absent</a>
-                        <a href="#">Total Absent</a>
-                        <a href="#">Total Absent</a>
-                        <a href="#">Total Absent</a>
-                        <a href="#">Total Absent</a>
+                        <a href="totalreport.php">Attendance Report</a>
+                        <!-- <a href="#">Total Absent</a> -->
+                        <!-- <a href="#">Total Absent</a> -->
+                        <!-- <a href="#">Total Absent</a> -->
+                        <!-- <a href="#">Total Absent</a> -->
+                        <!-- <a href="#">Total Absent</a> -->
 
                     </div>
                 </div>

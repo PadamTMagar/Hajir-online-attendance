@@ -1,3 +1,6 @@
+<?php session_start()
+
+?>
 <?php
 date_default_timezone_set('Asia/Kathmandu');  // Set the time zone to Nepal Time (NPT)
 

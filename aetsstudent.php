@@ -1,3 +1,5 @@
+
+
 <div class="wrapper">  
         <div class="logo">
             <a href="index.php"><img src="assets/Hajir.png" alt="logo"></a>
@@ -16,7 +18,7 @@
                     <label for="UserMng" class="menubutton"><i class="fa-solid fa-user-gear"></i> User Management   </label>
                     <div class="menucontent">
                         <!-- <a href="role.php">Role</a> -->
-                        <a href="user.php">User</a>
+                        <a href="viewuserStu.php">User</a>
                     </div>
                 </div>
             
@@ -67,7 +69,7 @@
                     <input type="checkbox" id="report">
                     <label for="report" class="menubutton"><i class="fa-solid fa-database"></i> Report</label>
                     <div class="menucontent">
-                        <a href="#">Total Present</a>
+                        <a href="ownattendance.php">Attendance Report</a>
                         <a href="#">Total Absent</a>
                         <a href="#">Total Absent</a>
                         <a href="#">Total Absent</a>

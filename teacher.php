@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +21,10 @@
         <div class="teacher_content">
             <div class="teacher_title">
                 <span>All Teachers</span>
-                <div class="add">
+                <!-- <div class="add">
                     <div class="add_icon"><i class="fa-solid fa-plus"></i></div>
                     <button onclick="location.href='createuser.php';">Add</button>    
-                </div> 
+                </div>  -->
             </div>
 
             <table class="teacher_table">

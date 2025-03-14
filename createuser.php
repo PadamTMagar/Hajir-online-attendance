@@ -1,3 +1,5 @@
+<?php session_start()?>
+
 <?php
 require_once('aetsconn.php');
 
