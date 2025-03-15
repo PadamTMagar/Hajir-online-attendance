@@ -11,11 +11,11 @@
                     <span id="hovertext">Calendar</span>
                     <li id="calanderpopup"><a href="#"><i class="fa-regular fa-calendar-days"></i></a></li>
                 </div>
-
+<!-- 
                 <div class="navlist">
                     <span id="hovertext">Report</span>
                     <li><a href="report.php"><i class="fa-regular fa-clipboard"></i></a></li>
-                </div>
+                </div> -->
 
                 <!-- <div class="navlist">
                     <span id="hovertext">Notice</span>

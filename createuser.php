@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
                     <div class="form_group">
                         <label for="phone_number" id="num">Phone Number:*</label>
-                        <input type="tel" name="phone_number" id="phone_number" placeholder="+977 - 9*********" required>
+                        <input type="tel" name="phone_number" id="phone_number" placeholder="9*********" required>
                     </div>
 
                     <div class="form_group">
