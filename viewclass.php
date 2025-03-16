@@ -1,4 +1,4 @@
-<?php session_start()?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,10 @@
 </head>
 <body>
 <?php require_once('aetsheader.php'); ?>
-<?php require_once('aetssidebar.php'); ?>  
+<?php
+//  require_once('aetssidebar.php'); 
+ require_once('aetsvalidside.php');
+ ?>  
 <?php require_once('aetsconn.php'); ?>
  
     <div class="container">

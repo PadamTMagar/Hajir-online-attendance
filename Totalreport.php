@@ -1,8 +1,9 @@
-<?php session_start(); ?>
+
 <?php
 date_default_timezone_set('Asia/Kathmandu');
 include("aetsheader.php");
-include("aetssidebar.php");
+// include("aetssidebar.php");
+require_once('aetsvalidside.php');
 include("aetsconn.php");
 
 ini_set('display_errors', 1);

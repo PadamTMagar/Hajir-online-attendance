@@ -1,7 +1,8 @@
 <?php
-session_start();
+
 include("aetsheader.php");
-include("aetssidebar.php");
+// include("aetssidebar.php");
+require_once('aetsvalidside.php');
 require_once 'aetsconn.php';
 
 

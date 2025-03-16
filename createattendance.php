@@ -1,7 +1,7 @@
-<?php session_start()?>
+
 <?php
 include("aetsheader.php");
-include("aetssidebar.php");
+require_once('aetsvalidside.php');
 include("aetsconn.php");
 
 ini_set('display_errors', 1);
@@ -73,7 +73,7 @@ if (isset($_POST['save_attendance'])) {
                                    VALUES ('$user_id', '$current_date', '$status', '$classroom_name')";
 
                 if (mysqli_query($conn, $attendance_sql)) {
-                    $succes_msg = "Attendance saved for user ID: " . $user_id;
+                    $succes_msg = "Attendance saved  ";
                 } else {
                     $error = "Error saving attendance: " . mysqli_error($conn);
                 }
