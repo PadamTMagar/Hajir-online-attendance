@@ -128,7 +128,11 @@ while ($classroom = mysqli_fetch_assoc($class_result)) {
 <body>
 
 <?php require_once('aetsheader.php'); ?>
-<?php require_once('aetssidebar.php'); ?>  
+<?php 
+// require_once('aetssidebar.php');
+require_once('aetsvalidside.php'); 
+?>  
+
 
 <div class="container">
     <div class="add_user">
