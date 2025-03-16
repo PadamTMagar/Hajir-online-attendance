@@ -24,7 +24,7 @@
 
                 <div class="navlist">
                     <span id="hovertext">Profile</span>
-                    <li><a href="#" id="profile"><i class="fa-solid fa-id-card"></i></a></li>
+                    <li><a href="userprofile.php" id="profile"><i class="fa-solid fa-id-card"></i></a></li>
                 </div>
                 
                 <div id="date"></div>
