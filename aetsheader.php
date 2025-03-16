@@ -21,6 +21,11 @@
                     <span id="hovertext">Notice</span>
                     <li><a href="#" id="notice" onclick="display()"><i class="fa-solid fa-bell fa-shake"></i></a></li>
                 </div> -->
+
+                <div class="navlist">
+                    <span id="hovertext">Profile</span>
+                    <li><a href="#" id="profile"><i class="fa-solid fa-id-card"></i></a></li>
+                </div>
                 
                 <div id="date"></div>
                 <div class="login" onclick="toggle('drop_menu')"><button class="drop_button">Logout</button></div>
