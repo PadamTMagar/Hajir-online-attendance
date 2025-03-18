@@ -1,74 +1,86 @@
 CREATE DATABASE hajir;
 USE hajir;
 
-CREATE TABLE `attendance` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(20) unsigned DEFAULT NULL,
-  `attendance_date` date NOT NULL,
-  `status` enum('Present','Absent') NOT NULL,
-  `classroom_name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_attendance` (`user_id`),
-  KEY `fk_attendance_classroom_name` (`classroom_name`),
-  CONSTRAINT `fk_attendance` FOREIGN KEY (`user_id`) REFERENCES `user_db` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_attendance_classroom_name` FOREIGN KEY (`classroom_name`) REFERENCES `classroom` (`classroom_name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `classroom` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `classroom_name` varchar(20) NOT NULL,
-  `class_size` int(11) NOT NULL,
-  `created_time` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `classroom_name` (`classroom_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `role_db` (
-  `role_id` int(20) NOT NULL,
-  `rolename` varchar(30) NOT NULL,
-  PRIMARY KEY (`rolename`) USING BTREE
+-- Role Table
+CREATE TABLE role_db (
+  role_id INT(20) NOT NULL AUTO_INCREMENT,
+  rolename VARCHAR(30) NOT NULL,
+  PRIMARY KEY (role_id),
+  UNIQUE KEY (rolename)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `user_db` (
-  `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(20) unsigned NOT NULL,
-  `user` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `passwd` varchar(255) NOT NULL,
-  `user_role` varchar(30) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `user_db_ibfk_1` (`user_role`),
-  CONSTRAINT `user_db_ibfk_1` FOREIGN KEY (`user_role`) REFERENCES `role_db` (`rolename`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Insert predefined roles
+INSERT INTO role_db (role_id, rolename) VALUES
+(1, 'Teacher'),
+(2, 'Admin'),
+(3, 'Student');
 
-CREATE TABLE `userlist` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(50) NOT NULL,
-  `midname` varchar(50) DEFAULT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `emailid` varchar(50) NOT NULL,
-  `phone_number` varchar(10) NOT NULL,
-  `profile_pic` varchar(255) NOT NULL,
-  `class_selection` varchar(30) DEFAULT NULL,
-  `dob` date NOT NULL,
-  `gender` varchar(20) DEFAULT NULL,
-  `marital` varchar(30) DEFAULT NULL,
-  `blood` varchar(10) NOT NULL,
-  `alter_contact` varchar(20) DEFAULT NULL,
-  `perm_address` varchar(255) NOT NULL,
-  `temp_address` varchar(255) NOT NULL,
-  `father_name` varchar(50) NOT NULL,
-  `father_occupation` varchar(50) NOT NULL,
-  `father_contact` varchar(20) NOT NULL,
-  `mother_name` varchar(50) NOT NULL,
-  `mother_contact` varchar(20) NOT NULL,
-  `guardian_name` varchar(20) DEFAULT NULL,
-  `guardian_contact` varchar(20) DEFAULT NULL,
-  `user_id` int(20) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `userlist_ibfk_1` (`class_selection`),
-  KEY `fk_user_id` (`user_id`),
-  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user_db` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `userlist_ibfk_1` FOREIGN KEY (`class_selection`) REFERENCES `classroom` (`classroom_name`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- User Table
+CREATE TABLE user_db (
+  id INT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT(20) UNSIGNED NOT NULL,
+  user VARCHAR(30) NOT NULL,
+  email VARCHAR(30) NOT NULL,
+  passwd VARCHAR(255) NOT NULL,
+  user_role VARCHAR(30) DEFAULT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY user_db_ibfk_1 (user_role),
+  CONSTRAINT user_db_ibfk_1 FOREIGN KEY (user_role) REFERENCES role_db (rolename) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Classroom Table
+CREATE TABLE classroom (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  classroom_name VARCHAR(20) NOT NULL,
+  class_size INT(11) NOT NULL,
+  created_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY classroom_name (classroom_name)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Attendance Table
+CREATE TABLE attendance (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  user_id INT(20) UNSIGNED DEFAULT NULL,
+  attendance_date DATE NOT NULL,
+  status ENUM('Present','Absent') NOT NULL,
+  classroom_name VARCHAR(20) NOT NULL,
+  PRIMARY KEY (id),
+  KEY fk_attendance (user_id),
+  KEY fk_attendance_classroom_name (classroom_name),
+  CONSTRAINT fk_attendance FOREIGN KEY (user_id) REFERENCES user_db (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_attendance_classroom_name FOREIGN KEY (classroom_name) REFERENCES classroom (classroom_name) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- User List Table
+CREATE TABLE userlist (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  firstname VARCHAR(50) NOT NULL,
+  midname VARCHAR(50) DEFAULT NULL,
+  lastname VARCHAR(50) NOT NULL,
+  emailid VARCHAR(50) NOT NULL,
+  phone_number VARCHAR(15) NOT NULL,
+  profile_pic VARCHAR(255) NOT NULL,
+  class_selection VARCHAR(30) DEFAULT NULL,
+  dob DATE NOT NULL,
+  gender VARCHAR(20) DEFAULT NULL,
+  marital VARCHAR(30) DEFAULT NULL,
+  blood VARCHAR(10) NOT NULL,
+  alter_contact VARCHAR(20) DEFAULT NULL,
+  perm_address VARCHAR(255) NOT NULL,
+  temp_address VARCHAR(255) NOT NULL,
+  father_name VARCHAR(50) NOT NULL,
+  father_occupation VARCHAR(50) NOT NULL,
+  father_contact VARCHAR(20) NOT NULL,
+  mother_name VARCHAR(50) NOT NULL,
+  mother_contact VARCHAR(20) NOT NULL,
+  guardian_name VARCHAR(20) DEFAULT NULL,
+  guardian_contact VARCHAR(20) DEFAULT NULL,
+  user_id INT(20) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY userlist_ibfk_1 (class_selection),
+  KEY fk_user_id (user_id),
+  CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user_db (id) ON DELETE CASCADE,
+  CONSTRAINT userlist_ibfk_1 FOREIGN KEY (class_selection) REFERENCES classroom (classroom_name) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
