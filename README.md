@@ -10,7 +10,7 @@
 - View report and data analysis.
 
 This project is designed and developed by Padam Thapa Magar 
-with collaboration with Pemba Tamang Lama
+with collaboration with Pemba Tamang 
 [It is 4sem Project]
 
 ## Dashboard
@@ -29,3 +29,4 @@ with collaboration with Pemba Tamang Lama
 ![image](https://github.com/user-attachments/assets/19e789a3-501e-4a30-9a4c-7a2078cb2bdc)
 ## Calander
 ![image](https://github.com/user-attachments/assets/258a041d-ee2e-48be-8a20-7fde711f91aa)
+## Profile
