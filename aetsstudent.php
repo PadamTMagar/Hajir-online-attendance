@@ -70,11 +70,11 @@
                     <label for="report" class="menubutton"><i class="fa-solid fa-database"></i> Report</label>
                     <div class="menucontent">
                         <a href="ownattendance.php">Attendance Report</a>
+                        <!-- <a href="#">Total Absent</a>
                         <a href="#">Total Absent</a>
                         <a href="#">Total Absent</a>
                         <a href="#">Total Absent</a>
-                        <a href="#">Total Absent</a>
-                        <a href="#">Total Absent</a>
+                        <a href="#">Total Absent</a> -->
 
                     </div>
                 </div>

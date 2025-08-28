@@ -40,7 +40,7 @@ header{
     justify-content: center;
     align-items: center;
     z-index: 2;
-    user-select: none;
+    /* user-select: none; */
     /*border-bottom:1px #acb0b2 solid; */
 
 }
@@ -205,7 +205,7 @@ header{
 .menu {
     margin: 0;
     width: 208px;
-    user-select: none;
+    /* user-select: none; */
 
 }
 
@@ -1315,7 +1315,7 @@ header .calandar-navbar span{
     text-align: center;
     border-radius: 50%;
     line-height: 40px;
-    user-select: none;
+    /* user-select: none; */
     color: #aeabab;
     font-size: 25px;
 }
@@ -1393,5 +1393,5 @@ header .calandar-navbar span{
 /* Create attendance form css  */
 .select_class {
     color: red;
-    margin: 20  ;
+    margin: 20px  ;
 }

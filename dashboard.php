@@ -30,7 +30,7 @@ $total_present = 0;
 $total_absent = 0;
 $total_classes = 0;
 
-// Fetch total students
+// Fetch total students form database
 $result = $conn->query("SELECT COUNT(*) AS total_students FROM userlist ul INNER JOIN user_db u ON ul.user_id = u.id WHERE u.user_role = 'Student'");
 if ($result) {
     $row = $result->fetch_assoc();
@@ -111,10 +111,6 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 ?>
-
-
-
-
 
 
 <html>

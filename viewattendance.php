@@ -1,6 +1,6 @@
 
 <?php
-date_default_timezone_set('Asia/Kathmandu');  // Set the time zone to Nepal Time (NPT)
+date_default_timezone_set('Asia/Kathmandu');  // Nepal Time Zone
 
 include("aetsheader.php");
 // include("aetssidebar.php");

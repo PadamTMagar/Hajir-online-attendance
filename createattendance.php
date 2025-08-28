@@ -12,7 +12,7 @@ if (!$conn) {
 }
 
 // Set the correct timezone (change to your preferred timezone if needed)
-date_default_timezone_set('Asia/Kathmandu');  // Example for Nepal Time (NPT)
+date_default_timezone_set('Asia/Kathmandu');  // Nepal Time 
 
 // Fetch classrooms
 $class_sql = "SELECT * FROM classroom";

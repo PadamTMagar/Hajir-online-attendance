@@ -33,14 +33,14 @@
 
                 
                 <!-- Classroom-->
-                <div class="menu">
+                <!-- <div class="menu">
                     <input type="checkbox" id="class">
                     <label for="class" class="menubutton"><i class="fa-solid fa-people-roof"></i> Classroom</label>
                     <div class="menucontent">
                         <a href="createclass.php">Add Classroom</a>
                         <a href="viewclass.php">View Classroom</a>
                     </div>
-                </div>
+                </div> -->
     
                 <!-- Attendance-->
                 <div class="menu">
