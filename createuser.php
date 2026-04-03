@@ -24,16 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $l_name = $_POST['lastname'];
     $email = $_POST['emailid'];
     $number = $_POST['phone_number'];
-    $pic_name = $_FILES["profile_pic"]["name"];
-    $temp_name = $_FILES["profile_pic"]["tmp_name"];
-    $folder = "profilePic/" . $pic_name;
+    // $pic_name = $_FILES["profile_pic"]["name"];
+    // $temp_name = $_FILES["profile_pic"]["tmp_name"];
+    // $folder = "profilePic/" . $pic_name;
     $username = $_POST['username'];
     $passwd = $_POST['passwd'];
     $confirm_pw = $_POST['confirm_pw'];
     $role_selection = $_POST['role_selection'];
     $class_selection = $_POST['class_selection'];
 
-    if (empty($username) || empty($email) || empty($passwd) || empty($confirm_pw) || empty($f_name) || empty($l_name) || empty($number) || empty($pic_name)) {
+    if (empty($username) || empty($email) || empty($passwd) || empty($confirm_pw) || empty($f_name) || empty($l_name) || empty($number)) {
         $error = "All fields are required!";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format!";
@@ -49,17 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         } else {
             $hashed_password = password_hash($passwd, PASSWORD_DEFAULT);
             
-            if (move_uploaded_file($temp_name, $folder)) {
-                $succes_msg = "File uploaded successfully.";
-            } else {
-                $error = "Error uploading file.";
-            }
 
             $insert_user = "INSERT INTO user_db (user, email, passwd, user_role) 
                             VALUES ('$username', '$email', '$hashed_password', '$role_selection')";
             
             if (mysqli_query($conn, $insert_user)) {
                 $user_id = mysqli_insert_id($conn);
+                
+                
 
                 $dob = $_POST['dob'];
                 $gender = $_POST['gender'];
@@ -77,11 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 $guardian_contact = $_POST['guardian_contact'];
 
                 $insert_data = "INSERT INTO userlist (firstname, midname, lastname, emailid, phone_number, profile_pic, class_selection, dob, gender, marital, blood, alter_contact, perm_address, temp_address, father_name, father_occupation, father_contact, mother_name, mother_contact, guardian_name, guardian_contact, user_id) 
-                                VALUES ('$f_name', '$m_name', '$l_name', '$email', '$number', '$pic_name', '$class_selection', '$dob', '$gender', '$marital', '$blood', '$alter_contact', '$perm_address', '$temp_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_contact', '$guardian_name', '$guardian_contact', '$user_id')";
+                                VALUES ('$f_name', '$m_name', '$l_name', '$email', '$number', NULL, '$class_selection', '$dob', '$gender', '$marital', '$blood', '$alter_contact', '$perm_address', '$temp_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_contact', '$guardian_name', '$guardian_contact', '$user_id')";
 
                 if (mysqli_query($conn, $insert_data)) {
                     $succes_msg = "New user added successfully.";
-                    header("Location: user.php"); 
+                    header("Location: face_capture.php?user_id=" . $userlist_id);
                     exit();
                 } else {
                     $error = "Error inserting data into userlist: " . mysqli_error($conn);
@@ -155,10 +152,10 @@ require_once('aetsvalidside.php');
                         <input type="tel" name="phone_number" id="phone_number" placeholder="9*********" required>
                     </div>
 
-                    <div class="form_group">
+                    <!-- <div class="form_group">
                         <label for="picture" id="picture">Choose a profile picture:*</label>
                         <input type="file" name="profile_pic" id="profile_pic" required>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
