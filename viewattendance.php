@@ -2,9 +2,9 @@
 <?php
 date_default_timezone_set('Asia/Kathmandu');  // Nepal Time Zone
 
+require_once('aetsvalidside.php');
 include("aetsheader.php");
 // include("aetssidebar.php");
-require_once('aetsvalidside.php');
 include("aetsconn.php");
 
 ini_set('display_errors', 1);

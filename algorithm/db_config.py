@@ -6,5 +6,5 @@ def get_db_connection():
         user="root",
         password="",
         database="hajir",
-        port=8080
+        port=3306
     )

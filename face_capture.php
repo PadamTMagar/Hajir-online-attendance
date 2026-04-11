@@ -215,13 +215,42 @@ $user = mysqli_fetch_assoc($result);
             const result = await response.json();
 
             if (result.status === "success") {
-                statusMsg.innerText = result.message;
-                setTimeout(() => {
-                    window.location.href = "user.php";
-                }, 2000);
+    statusMsg.style.color = "green";
+    statusMsg.innerText = "✅ Image saved! Face encoding is processing, please wait...";
+
+    // Poll check_encoding.php every 3 seconds to see if encoding is done
+    let attempts = 0;
+    const maxAttempts = 20; // wait up to 60 seconds
+
+    const checkInterval = setInterval(async () => {
+        attempts++;
+        try {
+            const checkRes = await fetch(`check_encoding.php?user_id=${userId}`);
+            const checkData = await checkRes.json();
+
+            if (checkData.encoded === true) {
+                clearInterval(checkInterval);
+                statusMsg.innerText = "✅ Face registered successfully! Redirecting...";
+                setTimeout(() => { window.location.href = "user.php"; }, 1500);
+            } else if (attempts >= maxAttempts) {
+                clearInterval(checkInterval);
+                statusMsg.style.color = "orange";
+                statusMsg.innerText = "⚠️ Encoding is taking longer than expected. You can continue and it will finish shortly.";
+                setTimeout(() => { window.location.href = "user.php"; }, 3000);
             } else {
-                statusMsg.innerText = result.message;
+                statusMsg.innerText = `⏳ Processing face encoding... (${attempts * 3}s)`;
             }
+        } catch(e) {
+            clearInterval(checkInterval);
+            statusMsg.innerText = "Image saved. Redirecting...";
+            setTimeout(() => { window.location.href = "user.php"; }, 2000);
+        }
+    }, 3000);
+
+} else {
+    statusMsg.style.color = "red";
+    statusMsg.innerText = "❌ " + result.message;
+}
         } catch (error) {
             console.error(error);
             statusMsg.innerText = "Error while saving face data.";

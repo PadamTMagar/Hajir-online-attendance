@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
 <body>
-<?php require_once('aetsheader.php'); ?>
 <?php
 //  require_once('aetssidebar.php'); 
 require_once('aetsvalidside.php');
- ?>
+ ?>    
+<?php require_once('aetsheader.php'); ?>
 <?php require_once('aetsconn.php');?>   
 <div class="container">
     <div class="teacher">

@@ -34,18 +34,17 @@ import pickle
 import face_recognition
 from db_config import get_db_connection
 
-# ----------------------------
-# 1. Get user_id from argument
-# ----------------------------
+#  Get user_id from argument
+
 if len(sys.argv) < 2:
     print("error: user_id not provided")
     sys.exit(1)
 
 user_id = sys.argv[1]
 
-# ----------------------------
-# 2. Build absolute image path
-# ----------------------------
+
+#  Build absolute image path
+
 script_dir = os.path.dirname(os.path.abspath(__file__))   # .../algorithm
 project_root = os.path.dirname(script_dir)                # .../Hajir
 
@@ -58,9 +57,9 @@ if not os.path.exists(image_full_path):
     print("error: image file not found")
     sys.exit(1)
 
-# ----------------------------
-# 3. Load image
-# ----------------------------
+
+#  Load image
+
 try:
     image = face_recognition.load_image_file(image_full_path)
     print(f"debug: image loaded successfully, shape = {image.shape}")
@@ -68,9 +67,9 @@ except Exception as e:
     print(f"error: unable to load image - {e}")
     sys.exit(1)
 
-# ----------------------------
-# 4. Detect face
-# ----------------------------
+
+#  Detect face
+
 try:
     face_locations = face_recognition.face_locations(image, model="hog")
 except Exception as e:
@@ -85,9 +84,8 @@ if len(face_locations) > 1:
     print("error: multiple faces detected")
     sys.exit(1)
 
-# ----------------------------
-# 5. Generate encoding
-# ----------------------------
+
+#  Generate encoding
 try:
     encodings = face_recognition.face_encodings(image, face_locations)
 
@@ -103,9 +101,9 @@ except Exception as e:
 # convert numpy array to binary for MySQL LONGBLOB
 encoding_binary = pickle.dumps(face_encoding)
 
-# ----------------------------
-# 6. Update database
-# ----------------------------
+
+#  Update database
+
 try:
     db = get_db_connection()
     cursor = db.cursor()

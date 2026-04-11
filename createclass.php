@@ -1,9 +1,9 @@
 
 
 <?php
-include("aetsheader.php");
 // include("aetssidebar.php");
 require_once('aetsvalidside.php');
+include("aetsheader.php");
 include("aetsconn.php");
 ?>
 <?php

@@ -1,0 +1,7 @@
+C:\Users\acer\anaconda3\envs\facereco\Lib\site-packages\face_recognition_models\__init__.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+debug: image path = C:\xampp\htdocs\Hajir\profilePic\student_7.jpg
+debug: image loaded successfully, shape = (480, 640, 3)
+success
+
+C:\xampp\htdocs\Hajir>

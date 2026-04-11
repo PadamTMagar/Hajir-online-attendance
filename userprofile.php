@@ -1,7 +1,6 @@
 <?php
-require_once('aetsconn.php'); // Database connection
 require_once('aetsvalidside.php'); // This already manages the session
-
+require_once('aetsconn.php'); // Database connection
 // Ensure the user is logged in
 if (!isset($_SESSION['user'])) {
     die("Access denied. Please log in.");
@@ -51,7 +50,17 @@ if ($result && mysqli_num_rows($result) > 0) {
             <div class="user_portal">
                 <div class="user_info">
                     <div class="profile_pannel">
-                        <img src="profilePic/<?php echo $user['profile_pic']; ?>" alt="ProfilePic" class="profile_pic1">
+                    
+                        <?php
+                            $pic = $user['profile_pic'];
+                            if (!empty($pic)) {
+                                // if already contains 'profilePic/' don't add it again
+                                $picSrc = (strpos($pic, 'profilePic/') === 0) ? $pic : 'profilePic/' . $pic;
+                            } else {
+                                $picSrc = 'profilePic/default_avatar.png';
+                            }
+                            ?>
+                            <img src="<?php echo htmlspecialchars($picSrc); ?>" alt="ProfilePic" class="profile_pic1">
                         <div class="user_name1">
                             <?php 
                                 echo $user['firstname']; 
@@ -142,6 +151,21 @@ if ($result && mysqli_num_rows($result) > 0) {
                             <span class="label">Guardian's Contact:</span>
                             <span class="value"><?php echo $user['guardian_contact']; ?></span>
                         </div>
+
+                         <?php if (empty($user['face_encoding'])): ?>
+                            <div class="data_row_group" style="margin-top: 15px;">
+                                <a href="face_capture.php?user_id=<?php echo $user['id']; ?>" 
+                                   style="display:inline-block; padding:8px 16px; background:#007bff; color:#fff; border-radius:6px; text-decoration:none; font-size:14px;">
+                                    <i class="fa-solid fa-camera"></i> Register Face
+                                </a>
+                            </div>
+                        <?php else: ?>
+                            <div class="data_row_group" style="margin-top: 15px;">
+                                <span style="color:green; font-size:14px;">
+                                    <i class="fa-solid fa-circle-check"></i> Face Already Registered
+                                </span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

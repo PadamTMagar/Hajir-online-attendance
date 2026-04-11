@@ -10,8 +10,8 @@
 <body>
 
 <?php
-require_once('aetsheader.php'); 
 require_once('aetsvalidside.php');
+require_once('aetsheader.php'); 
 require_once('dashboard.php');
 ?>
 

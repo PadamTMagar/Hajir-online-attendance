@@ -1,8 +1,9 @@
 
 <?php
-include("aetsheader.php");
-require_once('aetsvalidside.php');
-include("aetsconn.php");
+require_once('aetsvalidside.php'); // ✅ Must be first
+require_once('aetsconn.php');
+date_default_timezone_set('Asia/Kathmandu');
+include("aetsheader.php");      // ✅ HTML comes after session
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
